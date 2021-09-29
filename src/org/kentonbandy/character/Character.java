@@ -8,11 +8,13 @@ import java.util.List;
 public class Character {
     private String name;
     private String description;
+    private int currency;
     private List<Item> inventory = new ArrayList<>();
 
-    public Character(String name, String description, List<Item> inventory) {
+    public Character(String name, String description, int currency, List<Item> inventory) {
         this.name = name;
         this.description = description;
+        this.currency = currency;
         this.inventory = inventory;
     }
 
@@ -20,7 +22,7 @@ public class Character {
         inventory.add(item);
     }
 
-    public void transferItem(Item item, Character recipient) {
+    public void giveItem(Item item, Character recipient) {
         recipient.getItem(item);
         inventory.remove(item);
     }
@@ -37,11 +39,19 @@ public class Character {
         return inventory;
     }
 
+    public int getCurrency() {
+        return currency;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setCurrency(int currency) {
+        this.currency = currency;
     }
 }
