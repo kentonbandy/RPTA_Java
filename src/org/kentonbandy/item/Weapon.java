@@ -1,4 +1,4 @@
-package org.kentonbandy;
+package org.kentonbandy.item;
 
 public class Weapon extends Item {
     private int power;

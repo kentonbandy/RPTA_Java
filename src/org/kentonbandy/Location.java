@@ -1,5 +1,7 @@
 package org.kentonbandy;
 
+import org.kentonbandy.item.Item;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,7 +10,7 @@ import java.util.Map;
 public class Location {
     private String name;
     private List<String> descriptions = new ArrayList<>();
-    private List<Item> items = new ArrayList<>();
+    private List<Item> items;
     private Map<String,Location> map = new HashMap<>();
 
     public Location(String name, List<String> descriptions, List<Item> items, Map<String,Location> map) {

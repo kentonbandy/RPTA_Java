@@ -1,4 +1,6 @@
-package org.kentonbandy;
+package org.kentonbandy.item;
+
+import org.kentonbandy.Sellable;
 
 import java.util.ArrayList;
 import java.util.List;

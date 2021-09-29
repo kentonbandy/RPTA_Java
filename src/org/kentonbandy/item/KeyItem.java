@@ -1,4 +1,4 @@
-package org.kentonbandy;
+package org.kentonbandy.item;
 
 public class KeyItem extends Item {
     private String target;

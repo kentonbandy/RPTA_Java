@@ -1,4 +1,4 @@
-package org.kentonbandy;
+package org.kentonbandy.item;
 
 public class Armor extends Item {
     private int defense;

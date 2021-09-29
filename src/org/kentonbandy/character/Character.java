@@ -1,4 +1,6 @@
-package org.kentonbandy;
+package org.kentonbandy.character;
+
+import org.kentonbandy.item.Item;
 
 import java.util.ArrayList;
 import java.util.List;
