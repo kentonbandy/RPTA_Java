@@ -23,6 +23,10 @@ public class Enemy extends Character {
         this.hp = Level.getHp(level);
     }
 
+    public int getAttackPower() {
+        return Level.getAttackPower(getLevel(), getWeapon());
+    }
+
     public int getLevel() {
         return level;
     }

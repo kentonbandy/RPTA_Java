@@ -9,30 +9,43 @@ import java.util.Map;
 
 public class Location {
     private String name;
-    private List<String> descriptions = new ArrayList<>();
+    private String description;
     private List<Item> items;
     private Map<String,Location> map = new HashMap<>();
 
-    public Location(String name, List<String> descriptions, List<Item> items, Map<String,Location> map) {
+    /**
+     * @param name display name for the Location
+     * @param description text that will display for this Location
+     * @apiNote an empty items List and directions Map will be created upon instantiation
+     */
+    public Location(String name, String description) {
         this.name = name;
-        this.descriptions = descriptions;
-        this.items = items;
-        this.map = map;
+        this.description = description;
+        items = new ArrayList<>();
+        map = new HashMap<>();
     }
 
     public Location travel(String direction) {
         return map.get(direction);
     }
 
+    public void addExit(String direction, Location location) {
+        map.put(direction, location);
+    }
+
     public String getName() {
         return name;
     }
 
-    public List<String> getDescriptions() {
-        return descriptions;
+    public String getDescription() {
+        return description;
     }
 
     public List<Item> getItems() {
         return items;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

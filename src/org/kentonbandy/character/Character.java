@@ -27,6 +27,10 @@ public class Character {
         inventory.remove(item);
     }
 
+    public void removeItem(Item item) {
+        inventory.remove(item);
+    }
+
     public String getName() {
         return name;
     }

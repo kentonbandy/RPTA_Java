@@ -40,8 +40,4 @@ public abstract class Level {
     public static int nextLevel(int currentLevel) {
         return currentLevel * currentLevel * 5;
     }
-
-    public static void levelUp(int level) {
-
-    }
 }

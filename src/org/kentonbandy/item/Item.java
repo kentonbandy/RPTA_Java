@@ -9,12 +9,13 @@ public class Item implements Sellable {
     private String name;
     private String description;
     private int price;
-    private boolean gettable = true;
+    private boolean gettable;
 
     public Item(String name, String description, int price) {
         this.name = name;
         this.description = description;
         this.price = price;
+        this.gettable = true;
     }
 
     public Item(String name, String description, int price, boolean gettable) {

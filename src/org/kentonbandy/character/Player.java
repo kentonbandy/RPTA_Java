@@ -7,8 +7,8 @@ import org.kentonbandy.item.*;
 import java.util.List;
 
 public class Player extends Enemy {
-    private int mp;
-    private int xp;
+    private  int mp;
+    private  int xp;
 
     public Player(String name, String description, int currency, List<Item> inventory, int level, Attack attack, Armor armor,
                   Weapon weapon) {
@@ -21,6 +21,24 @@ public class Player extends Enemy {
 
     public void levelUp() {
         setLevel(getLevel() + 1);
+        this.setHp(Level.getHp(getLevel()));
+        this.setMp(Level.getMp(getLevel()));
+    }
+
+    public void setLevel(int level) {
+        super.setLevel(level);
+        setHp(Level.getHp(getLevel()));
+        setMp(Level.getMp(getLevel()));
+    }
+
+    public boolean use(Potion potion) {
+        if (getInventory().contains(potion)) {
+            if (potion.healsHp()) setHp(getHp() + potion.getStrength());
+            else setMp(getMp() + potion.getStrength());
+            removeItem(potion);
+            return true;
+        }
+        return false;
     }
 
     public int getMp() {
