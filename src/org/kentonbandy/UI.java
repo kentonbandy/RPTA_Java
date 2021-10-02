@@ -1,24 +1,74 @@
 package org.kentonbandy;
 
 
+import org.kentonbandy.character.Player;
+import org.kentonbandy.item.Currency;
+import org.kentonbandy.item.Item;
+
+import java.util.List;
+
 public class UI {
-    public static void atLocation(Location location) {
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println(location.getName().toUpperCase() + "\n");
+    public static void atLocation(Location location, int wrapWidth) {
+        newLines(20);
+        printUppercase(location.getName());
+        newLines(1);
         String desc = location.getDescription();
-        String[] wordArr = desc.split(" ");
+        System.out.println(wordWrap(desc, wrapWidth));
+    }
+
+    public static void levelUp(Player player) {
+        newLines(1);
+        printUppercase("level up!!!");
+        newLines(1);
+        System.out.println("Level " + player.getLevel() + "!");
+        System.out.println("HP: " + player.calculateHp(player.getLevel() - 1) + " --> " + player.getHp());
+        System.out.println("MP: " + player.calculateMp(player.getLevel() - 1) + " --> " + player.getMp());
+        System.out.println("Attack Power: " +
+                player.getAttackPower(player.getLevel() - 1) + " --> " + player.getAttackPower(player.getLevel()));
+    }
+
+    public static String wordWrap(String string, int width) {
+        String[] wordArr = string.split(" ");
         String output = "";
-        int len = 0;
-        //for (int i=0; i<desc.length(); i+=40) {
-        //    if(desc.length() - i > 40) output += "\n" + desc.substring(i, i+40);
-        //    else output += "\n" + desc.substring(i);
-        //}
+        StringBuilder line = new StringBuilder();
         for (String word : wordArr) {
-            if ((output.length() % 60) + word.length() < 60 && output.length() != 60) {
-                output += word + " ";
-            } else output += "\n" + word + " ";
+            int lineLen = line.length();
+            int wordLen = word.length();
+            int remainder = lineLen % width;
+            if (remainder + wordLen < width && remainder > 0) {
+                line.append(word).append(" ");
+            } else {
+                output += line.toString().strip() + "\n";
+                line = new StringBuilder(word + " ");
+            }
         }
-        output += "\n\n";
-        System.out.println(output);
+        output += line.toString().strip();
+        return output;
+    }
+
+    public static String wordWrap(String string) {
+        return wordWrap(string, 60);
+    }
+
+    public static void newLines(int num) {
+        for (num=num; num>0; num--) {
+            System.out.println();
+        }
+    }
+
+    public static void printUppercase(String string) {
+        System.out.println(string.toUpperCase());
+    }
+
+    public static void printInventory(Player player) {
+        List<Item> list = player.getInventory();
+        int size = list.size();
+        System.out.print("Inventory: ");
+        if (size == 0) System.out.println("empty!");
+        for (int i = 0; i < size; i++) {
+            if (i == size - 1) System.out.println(list.get(i).getName());
+            else System.out.print(list.get(i).getName() + ", ");
+        }
+        System.out.println(Currency.getCurrencyName() + ": " + player.getCurrencyAmount());
     }
 }

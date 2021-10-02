@@ -23,6 +23,15 @@ public class Item implements Sellable {
         this.gettable = gettable;
     }
 
+    public boolean equals(Item item) {
+        if (name.equals(item.getName())) return true;
+        return false;
+    }
+
+    public boolean isCurrency() {
+        return false;
+    }
+
     public void makeGettable() {
         gettable = true;
     }
@@ -42,5 +51,9 @@ public class Item implements Sellable {
 
     public boolean isGettable() {
         return gettable;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

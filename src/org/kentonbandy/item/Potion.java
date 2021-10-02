@@ -4,6 +4,13 @@ public class Potion extends Item {
     private int strength;
     private boolean healsHp;
 
+    /**
+     * @param name
+     * @param description
+     * @param price
+     * @param strength
+     * @param healsHp
+     */
     public Potion(String name, String description, int price, int strength, boolean healsHp) {
         super(name, description, price);
         this.strength = strength;

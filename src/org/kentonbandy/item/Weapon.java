@@ -1,17 +1,18 @@
 package org.kentonbandy.item;
 
+import org.kentonbandy.action.Attack;
+
 public class Weapon extends Item {
-    private int power;
+    private Attack attack;
 
     /**
      * @param name the name of the weapon
      * @param description weapon description
      * @param price purchasing price
-     * @param power how much attack power this weapon adds to the player
      */
-    public Weapon(String name, String description, int price, int power) {
+    public Weapon(String name, String description, int price, Attack attack) {
         super(name, description, price);
-        this.power = power;
+        this.attack = attack;
     }
 
     /**
@@ -19,14 +20,17 @@ public class Weapon extends Item {
      * @param description weapon description
      * @param price purchasing price
      * @param gettable whether the player can get this weapon
-     * @param power how much attack power this weapon adds to the player
      */
-    public Weapon(String name, String description, int price, boolean gettable, int power) {
+    public Weapon(String name, String description, int price, Attack attack, boolean gettable) {
         super(name, description, price, gettable);
-        this.power = power;
+        this.attack = attack;
+    }
+
+    public Attack getAttack() {
+        return attack;
     }
 
     public int getPower() {
-        return power;
+        return attack.getPower();
     }
 }

@@ -22,11 +22,6 @@ public class Character {
         inventory.add(item);
     }
 
-    public void giveItem(Item item, Character recipient) {
-        recipient.getItem(item);
-        inventory.remove(item);
-    }
-
     public void removeItem(Item item) {
         inventory.remove(item);
     }
@@ -43,8 +38,12 @@ public class Character {
         return inventory;
     }
 
-    public int getCurrency() {
+    public int getCurrencyAmount() {
         return currency;
+    }
+
+    public void acquireCurrency(int currency) {
+        this.currency += currency;
     }
 
     public void setName(String name) {

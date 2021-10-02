@@ -12,19 +12,52 @@ public class Enemy extends Character {
     private Armor armor;
     private Weapon weapon;
     private int hp;
+    private Item triggerItem;
 
-    public Enemy(String name, String description, int currency, List<Item> inventory, int level, Attack attack,
-                 Armor armor, Weapon weapon) {
+    /**
+     * @param name
+     * @param description
+     * @param currency
+     * @param inventory
+     * @param level
+     * @param armor
+     * @param weapon
+     */
+    public Enemy(String name, String description, int currency, List<Item> inventory, int level, Armor armor,
+                 Weapon weapon) {
         super(name, description, currency, inventory);
         this.level = level;
-        this.attack = attack;
         this.armor = armor;
         this.weapon = weapon;
-        this.hp = Level.getHp(level);
+        this.hp = calculateHp(level);
+        this.triggerItem = null;
     }
 
-    public int getAttackPower() {
-        return Level.getAttackPower(getLevel(), getWeapon());
+    public int calculateHp(int level) {
+        return 10 + (level * level);
+    }
+
+    public void die() {
+        unequipArmor();
+        unequipWeapon();
+    }
+
+    public void unequipArmor() {
+        getItem(armor);
+        armor = null;
+    }
+
+    public void unequipWeapon() {
+        getItem(weapon);
+        weapon = null;
+    }
+
+    public int getAttackPower(int level) {
+        return (level * 2) + weapon.getPower();
+    }
+
+    public int getDefense() {
+        return armor.getDefense();
     }
 
     public int getLevel() {
@@ -65,5 +98,9 @@ public class Enemy extends Character {
 
     public void setHp(int hp) {
         this.hp = hp;
+    }
+
+    public void setTriggerItem(Item item) {
+        triggerItem = item;
     }
 }
