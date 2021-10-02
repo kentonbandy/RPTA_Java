@@ -6,14 +6,23 @@ import org.kentonbandy.item.Currency;
 import org.kentonbandy.item.Item;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class UI {
+    private static Scanner scanner = new Scanner(System.in);
+
+    private static int defaultWidth = 60;
+
     public static void atLocation(Location location, int wrapWidth) {
         newLines(20);
         printUppercase(location.getName());
-        newLines(1);
         String desc = location.getDescription();
         System.out.println(wordWrap(desc, wrapWidth));
+        newLines(1);
+    }
+
+    public static void atLocation(Location location) {
+        atLocation(location, defaultWidth);
     }
 
     public static void levelUp(Player player) {
@@ -23,9 +32,7 @@ public class UI {
         System.out.println("Level " + player.getLevel() + "!");
         System.out.println("HP: " + player.calculateHp(player.getLevel() - 1) + " --> " + player.getHp());
         System.out.println("MP: " + player.calculateMp(player.getLevel() - 1) + " --> " + player.getMp());
-        System.out.println("Attack Power: " +
-                player.getAttackPower(player.getLevel() - 1) + " --> " + player.getAttackPower(player.getLevel()));
-    }
+        }
 
     public static String wordWrap(String string, int width) {
         String[] wordArr = string.split(" ");
@@ -70,5 +77,15 @@ public class UI {
             else System.out.print(list.get(i).getName() + ", ");
         }
         System.out.println(Currency.getCurrencyName() + ": " + player.getCurrencyAmount());
+    }
+
+    public static void setDefaultWidth(int width) {
+        defaultWidth = width;
+    }
+
+    public static String prompt() {
+        System.out.print(">>> ");
+        String input = scanner.nextLine();
+        return input;
     }
 }

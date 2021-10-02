@@ -14,6 +14,7 @@ public class Enemy extends Character {
     private int hp;
     private Item triggerItem;
 
+
     /**
      * @param name
      * @param description
@@ -33,27 +34,37 @@ public class Enemy extends Character {
         this.triggerItem = null;
     }
 
+    /**
+     * @param level
+     * @return
+     */
     public int calculateHp(int level) {
         return 10 + (level * level);
     }
 
-    public void die() {
+    public void unequipAll() {
         unequipArmor();
         unequipWeapon();
     }
 
+    /**
+     * Adds the equipped armor to the character's inventory and sets armor to null
+     */
     public void unequipArmor() {
-        getItem(armor);
-        armor = null;
+        if (armor != null) {
+            getItem(armor);
+            armor = null;
+        }
     }
 
+    /**
+     * Adds the equipped weapon to the character's inventory and sets weapon to null
+     */
     public void unequipWeapon() {
-        getItem(weapon);
-        weapon = null;
-    }
-
-    public int getAttackPower(int level) {
-        return (level * 2) + weapon.getPower();
+        if (weapon != null) {
+            getItem(weapon);
+            weapon = null;
+        }
     }
 
     public int getDefense() {
@@ -80,26 +91,44 @@ public class Enemy extends Character {
         return hp;
     }
 
+    /**
+     * @param level
+     */
     public void setLevel(int level) {
         this.level = level;
     }
 
+    /**
+     * @param attack
+     */
     public void setAttack(Attack attack) {
         this.attack = attack;
     }
 
+    /**
+     * @param armor
+     */
     public void setArmor(Armor armor) {
         this.armor = armor;
     }
 
+    /**
+     * @param weapon
+     */
     public void setWeapon(Weapon weapon) {
         this.weapon = weapon;
     }
 
+    /**
+     * @param hp
+     */
     public void setHp(int hp) {
         this.hp = hp;
     }
 
+    /**
+     * @param item
+     */
     public void setTriggerItem(Item item) {
         triggerItem = item;
     }

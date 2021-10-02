@@ -65,14 +65,31 @@ public class Player extends Enemy {
         return currentLevel * currentLevel * 5;
     }
 
+    public boolean equipArmor(Armor armor) {
+        if (getInventory().contains(armor)) {
+            unequipArmor();
+            setArmor(armor);
+            removeItem(armor);
+            return true;
+        }
+        return false;
+    }
+
     /**
      * @param potion
      * @return
      */
     public boolean use(Potion potion) {
         if (getInventory().contains(potion)) {
-            if (potion.healsHp()) setHp(getHp() + potion.getStrength());
-            else setMp(getMp() + potion.getStrength());
+            if (potion.healsHp()) {
+                int maxHp = calculateHp(getLevel());
+                setHp(getHp() + (int)(maxHp * (potion.getStrength() / 100.00)));
+                if (getHp() > maxHp) setHp(maxHp);
+            } else {
+                int maxMp = calculateMp(getLevel());
+                setMp(getMp() + (int)(maxMp * (potion.getStrength() / 100.00)));
+                if (getMp() > maxMp) setMp(maxMp);
+            }
             removeItem(potion);
             return true;
         }
@@ -91,7 +108,7 @@ public class Player extends Enemy {
     }
 
     /**
-     * @param enemyLevel
+     * @param enemy
      * @return the amount of XP to be earned by defeating an enemy at the given level
      */
     public void getEarnedXp(Enemy enemy) {

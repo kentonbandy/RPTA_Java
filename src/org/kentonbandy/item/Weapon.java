@@ -2,17 +2,20 @@ package org.kentonbandy.item;
 
 import org.kentonbandy.action.Attack;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Weapon extends Item {
-    private Attack attack;
+    private List<Attack> attacks;
 
     /**
      * @param name the name of the weapon
      * @param description weapon description
      * @param price purchasing price
      */
-    public Weapon(String name, String description, int price, Attack attack) {
+    public Weapon(String name, String description, int price, List<Attack> attacks) {
         super(name, description, price);
-        this.attack = attack;
+        this.attacks = attacks;
     }
 
     /**
@@ -21,16 +24,16 @@ public class Weapon extends Item {
      * @param price purchasing price
      * @param gettable whether the player can get this weapon
      */
-    public Weapon(String name, String description, int price, Attack attack, boolean gettable) {
+    public Weapon(String name, String description, int price, boolean gettable, List<Attack> attacks) {
         super(name, description, price, gettable);
-        this.attack = attack;
+        this.attacks = attacks;
     }
 
-    public Attack getAttack() {
-        return attack;
+    public List<Attack> getAttackList() {
+        return attacks;
     }
 
-    public int getPower() {
+    public int getPower(Attack attack) {
         return attack.getPower();
     }
 }
