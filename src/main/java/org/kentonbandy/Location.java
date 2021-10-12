@@ -31,10 +31,6 @@ public class Location {
         map = new HashMap<>();
     }
 
-    public Location travel(String direction) {
-        return map.get(direction);
-    }
-
     /**
      * @param direction
      * @param location

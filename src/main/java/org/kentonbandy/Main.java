@@ -101,7 +101,7 @@ public class Main {
         park.addItem(stick);
 
         // Create Characters
-        Player player = new Player("Kenny", "A foolhardy youth who probably needs to study more.", 50, new ArrayList<Item>(), 1, shirt, backpack);
+        Player.setFields("Kenny", "A foolhardy youth who probably needs to study more.", 50, new ArrayList<Item>(), 1, shirt, backpack);
         Enemy vicePrincipal = new Enemy("Vice Principal", "An overdressed man with a thick southern accent. From what you can tell, he despises kids.", 100, List.of(potion, mPotion), 6, blazer, clipOn);
         Enemy tank = new Enemy("Tank", "A small, white dog with an ironic name. Wears an interesting collar.", 50, List.of(potion, mPotion), 3, furCoat, collar);
         Enemy punk = new Enemy("Punk Kid", "A kid who's clearly looking for trouble. Wears a spike choker and is poised to battle with weaponized teen angst.", 10, List.of(), 1, spikeChoker, angst);
@@ -114,7 +114,6 @@ public class Main {
         while (true) {
             UI.atLocation(currentLocation);
             input = UI.prompt();
-            currentLocation = currentLocation.travel(input);
         }
 
 
