@@ -6,8 +6,8 @@ public class AdventureLoop {
 
     public static void run() {
         while (true) {
-            UI.atLocation(currentLocation);
-            String input = UI.prompt();
+            CliPrinter.atLocation(currentLocation);
+            String input = CliPrinter.prompt();
         }
     }
 

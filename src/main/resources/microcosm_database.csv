@@ -1,0 +1,77 @@
+ATTACK
+name|description|power|mpCost
+Backpack Bash|A crushing blow with a backpack full of books!|2
+Throw Book|A hardcover textbook to the face!|4|5
+Thwack|Slapped with a stick!|3
+Crisscross|Two thwacks in opposing directions!|5|7
+Blast|A disorienting sonic blast!|6
+Energy Burst|The mellophone begins to glow as it absorbs energy ... and releases it in a devastating giant beam out of the bell!|10|15
+Give Detention|Straight to Detention!|2
+Call Parents|Your child has been very very naughty!|6|5
+Ankle Bite|That's gonna hurt in the morning!|3|2
+Threatening Aura|Hostile vibes extend in all directions!|1
+Pee on Leg|That smells awful!|4|4
+Call names|Wow, name calling is so mean!|2
+Crude Joke|Part of a public school education!|3
+Threatening Odor|Breathing is painful|4|4
+Corrects Grammar|A grammatical error comes at a cost... in HP!|1
+Thick Lenses|The sun catches the lenses at the perfect angle, creating a death ray|3
+Steal WiFi|A laptop appears... password cracked... WiFi stolen!|4|4
+Muscle Flex|Those muscles are too big to handle!|2
+Football|A football smashes into its target as only a third-stringer could throw it!|3
+Bench|You've been bench pressed! How does this cause damage? No one knows!|5|6
+
+ITEM
+name|description|price|gettable
+Snack|Your favorite pre-packaged salty snack. Heals HP by 40% up to max.|10|40|true
+Soda|A bottle of your favorite carbonated sugar drink. Replenishes MP by 40% up to max.|10|40|false
+"Magic" Brownie|Travis's mom might have neglected to mention a key ingredient in this dank brownie. It's unclear what effect it will have.|20|100|false
+Ribs|Succulent, Juicy ribs seasoned and cooked to perfection.|0|true
+Beverage|You're not sure what's in it but it's sure to be ... effective.|0|true
+
+ARMOR
+name|description|price|defense|gettable
+Shirt|A black tee shirt with System of a Down on the front.|5|3
+Leather Jacket|A brown leather jacket.|10|7
+Police Helmet|A flimsy toy police helmet. It offers a surprising amount of protection.|15|10
+Blazer|This is something you'd wear to a formal gathering.|20|8
+Fur Coat|The best natural armor a dog could ask for|100|4
+Spike Choker|It's like a pointy dog collar but for humans. It's edgy, I guess.|5|2
+Pocket Protector|Do they still make these things? A sturdy piece of plastic that goes in a shirt pocket and holds pens.|1|2
+Jock Strap|You know what it is. Protects the wearer from the most severe of attacks|4|2
+
+WEAPON
+name|description|price|Attacks(comma separated)|gettable
+Backpack|A worn-out Jansport backpack full of books.|2|Backpack Bash,Throw Book
+Stick|An stick about the length of your forearm. It seems pretty sturdy.|5|Thwack,Crisscross
+Mellophone|It's like a french horn for marching band, also played by Chuck Mangione. These are its total use cases outside of combat.|15|Blast,Energy Burst
+Clip-on Tie|A fashion decision that is somehow simultaneously tacky and too formal for the setting.|2|Give Detention,Call Parents
+Discolored Collar|At first glance, this collar looks normal. But upon further inspection, one finds that it enables special abilities!|2|Threatening Aura,Ankle Bite,Pee on Leg
+Angst|A powerful anti-establishment force stemming from puberty and counter culture.|2|Call Names,Crude Joke,Threatening Odor
+Glasses|A pair of bombastic bifocals.|5|Corrects Grammar,Thick Lenses,Steal Wifi
+Ego|On game night, the entire town comes to cheer them on. This is big head energy.|0|Muscle Flex,Football,Bench
+
+ENEMY
+name|description|currency|inventory(comma separated)|level|Armor|Weapon
+Vice Principal|An overdressed man with a thick southern accent. From what you can tell, he despises kids.|100|Snack,Soda|6|Blazer|Clip-On Tie
+Tank|A small, white dog with an ironic name. Wears an interesting collar.|50|Snack,Soda|3|Fur Coat|Discolored Collar
+Punk Kid|A kid who's clearly looking for trouble. Wears a spike choker and is poised to battle with weaponized teen angst.|10||1|Spike Choker|Angst
+Nerd|This kid has everything: thick glasses, pocket protector, and it looks like there's a laptop in their backpack.|10||1|Pocket Protector|Glasses
+Jock|Great, a meathead who spends half their time in the weight room has challenged you to a fight. Good luck!|15||2|jockstrap|Ego
+
+SHOP OWNER
+name|description|currency|inventory(comma separated)|greeting|farewell
+Cashier|A recent high school graduate who looks like they'd rather not be there.|300|Snack,Soda|Whatever, just tell me what you want.|Come again, or not.
+
+LOCATION
+name|description|isSafe|items|enemies|shop|map
+WHS|You're in front of a red brick school that has bees painted all over the interior. The vice principal is walking toward you.|true||vicePrincipal||west:Crossroads,north:Zach's House,east:Park
+Crossroads|The road splits. To the North you see a yellow house. To the West you see a non-yellow house.|false||Punk Kid,Nerd,Jock||north:Farr's House,west:Travis's House,east:WHS
+Zach's House|You arrive at a hulking structure in it's own forest on an unassuming street corner. A tiny white dog comes running at you. Farr's house is to the west, WHS is to the south, and a corner store is to the east.|true||Tank||south:WHS,east:Corner Store,west:Farr's House,in:Inside Zach's House
+Inside Zach's House|You're in a spacious house that you recognize as zach's. Tank's toys adorn much of the interior. Is that... a police helmet??|true|Police Helmet|||out:Zach's House
+Park|A bunch of kids are playing frisbee, swinging, making out, fighting, you know, what kids do. You take shelter from the sun under a Maple tree. WHS is to the west, a corner store is to the north.|false|Stick|Punk Kid,Nerd,Jock||west:WHS,north:Corner Store
+Corner Store|You've arrived at a Subway/gas station/convenience store. Usually a hot open lunch location for students, this shop has somehow run out of everything except Snacks and Sodas. The cashier eyes you suspiciously from the counter.|true|||Cashier|south:Park,west:Zach's House
+Farr's House|An unambiguously yellow house stands before you. Farr's mom sees you and invites you in to have spaghetti for dinner. Zach's house is to the east, the crossroads lie to the south.|true||||east:Zach's House,south:Crossroads
+Travis's House|You're at the door of a house on the corner of an attractive development. Travis's mom opens the door and says "I have no idea where Travis is but I just made brownies! Want one?". You see another house to the West.|true|Brownie|||west:Wood's House,east:Crossroads
+Wood's House|You approach a house with a fleet of various trucks, jeeps, and cars. Chances are Wood and Zach are inside.|true||||in:Inside Wood's House,east:Travis's House
+Inside Wood's House|As expected, you see Wood and Zach at the dining room table, laptops out, playing World of Gamecraft. Fresh ribs have just come out of the oven and are resting on the counter. Wood and Zach beckon you to join them.|true|Ribs,Beverage|||out:Wood's House

@@ -24,7 +24,7 @@ public class Weapon extends Item {
      * @param price purchasing price
      * @param gettable whether the player can get this weapon
      */
-    public Weapon(String name, String description, int price, boolean gettable, List<Attack> attacks) {
+    public Weapon(String name, String description, int price, List<Attack> attacks, boolean gettable) {
         super(name, description, price, gettable);
         this.attacks = attacks;
     }

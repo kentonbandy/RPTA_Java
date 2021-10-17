@@ -8,10 +8,14 @@ import org.kentonbandy.item.Item;
 import java.util.List;
 import java.util.Scanner;
 
-public class UI {
+public class CliPrinter implements Output{
     private static Scanner scanner = new Scanner(System.in);
 
     private static int defaultWidth = 60;
+
+    public static void error(String message) {
+        System.out.println(message);
+    }
 
     public static void atLocation(Location location, int wrapWidth) {
         newLines(20);

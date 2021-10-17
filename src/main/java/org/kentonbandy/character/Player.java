@@ -1,6 +1,6 @@
 package org.kentonbandy.character;
 
-import org.kentonbandy.UI;
+import org.kentonbandy.CliPrinter;
 import org.kentonbandy.action.Attack;
 import org.kentonbandy.item.*;
 import java.util.List;
@@ -33,7 +33,7 @@ public class Player {
      */
     public static void levelUp() {
         setLevel(getLevel() + 1, false);
-        UI.levelUp();
+        CliPrinter.levelUp();
     }
 
     /**

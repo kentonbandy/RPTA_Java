@@ -13,6 +13,26 @@ public class Main {
     private static Location currentLocation;
 
     public static void main(String[] args) {
+        /*
+        Populating game:
+            LoadData interface feeds data to Factory
+            Factory creates objects in the following order:
+                Attack
+                Item/Armor/Weapon(uses Attack)
+                Enemy(uses Item/Armor/Weapon)/ShopOwner/Player
+                Location (uses Items, Enemy, ShopOwner)
+            Factory populates the following Maps <String, [Object]>:
+                Attack
+                Item
+                Armor
+                Weapon
+                Enemy
+                ShopOwner
+                Location
+            In each Map, a string of the object name points to the object. When the raw data needs to point to another
+            object, it will use the string of the name of that object so that the factory can use it to find the object.
+
+
         // Create Locations
         Location whs = new Location("WHS", "You're in front of a red brick school that has bees painted all over the interior. The vice principal is walking toward you.");
         Location crossroads = new Location("Crossroads", "The road splits. To the North you see a yellow house. To the West you see a non-yellow house.");
@@ -115,7 +135,7 @@ public class Main {
             UI.atLocation(currentLocation);
             input = UI.prompt();
         }
-
+*/
 
 
         /*

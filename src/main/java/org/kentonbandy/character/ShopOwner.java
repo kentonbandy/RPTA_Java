@@ -8,11 +8,12 @@ public class ShopOwner extends Character {
     private String greeting;
     private String farewell;
 
+
     /**
      * @param name
      * @param description
-     * @param inventory
      * @param currency
+     * @param inventory
      * @param greeting
      * @param farewell
      */

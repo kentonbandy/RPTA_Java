@@ -21,7 +21,7 @@ public class Armor extends Item {
      * @param defense
      * @param price
      */
-    public Armor(String name, String description, int price, boolean gettable, int defense) {
+    public Armor(String name, String description, int price, int defense, boolean gettable) {
         super(name, description, price, gettable);
         this.defense = defense;
     }
