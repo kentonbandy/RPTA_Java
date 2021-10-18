@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="961fc4ee-a892-44f2-802f-b6eca3ebc45d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/kentonbandy/ObjectFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kentonbandy/Factory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kentonbandy/FileIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kentonbandy/FileIO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kentonbandy/action/Attack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kentonbandy/action/Attack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kentonbandy/item/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kentonbandy/item/Weapon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/kentonbandy/Factory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/kentonbandy/FileIO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/kentonbandy/FileIO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/kentonbandy/action/Attack.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/kentonbandy/action/Attack.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kentonbandy/ObjectFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kentonbandy/ObjectFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/kentonbandy/ObjectFactoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/kentonbandy/ObjectFactoryTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,9 +161,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ObjectFactoryTests.buildItemsMap_builds_items" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="RPTA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.kentonbandy.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.kentonbandy" />
+      <option name="MAIN_CLASS_NAME" value="org.kentonbandy.ObjectFactoryTests" />
+      <option name="METHOD_NAME" value="buildItemsMap_builds_items" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.ObjectFactoryTests" />
+        <item itemvalue="JUnit.ObjectFactoryTests.buildItemsMap_builds_items" />
         <item itemvalue="JUnit.ObjectFactoryTests.buildAttack_builds_attack" />
         <item itemvalue="JUnit.FileIOTests" />
         <item itemvalue="Application.Main" />
@@ -201,5 +212,16 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/org/kentonbandy/ObjectFactoryTests.java</url>
+          <line>65</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
