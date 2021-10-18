@@ -16,6 +16,7 @@ public class Attack {
         this.name = name;
         this.description = description;
         this.power = power;
+        mpCost = 0;
     }
 
     public Attack(String name, String description, int power, int mpCost) {

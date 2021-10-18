@@ -5,28 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="961fc4ee-a892-44f2-802f-b6eca3ebc45d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/kentonbandy/DataWriter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/kentonbandy/Input.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/kentonbandy/notes.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/kentonbandy/ObjectFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPTA.iml" beforeDir="false" afterPath="$PROJECT_DIR$/RPTA.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kentonbandy/AdventureLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kentonbandy/AdventureLoop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kentonbandy/Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kentonbandy/Factory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kentonbandy/Factory.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/kentonbandy/FileIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kentonbandy/FileIO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kentonbandy/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kentonbandy/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kentonbandy/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kentonbandy/CliPrinter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kentonbandy/character/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kentonbandy/character/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kentonbandy/character/ShopOwner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kentonbandy/character/ShopOwner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kentonbandy/item/Armor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kentonbandy/item/Armor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kentonbandy/action/Attack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kentonbandy/action/Attack.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/kentonbandy/item/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kentonbandy/item/Weapon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/microcosm_database.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/microcosm_database.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/microcosm_database.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/kentonbandy/DbReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/kentonbandy/character/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/kentonbandy/character/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/kentonbandy/character/ShopOwner.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/kentonbandy/character/ShopOwner.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/kentonbandy/item/Armor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/kentonbandy/item/Armor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/kentonbandy/item/Weapon.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/kentonbandy/item/Weapon.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/kentonbandy/Factory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/kentonbandy/FileIO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/kentonbandy/FileIO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/kentonbandy/action/Attack.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/kentonbandy/action/Attack.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +110,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
-  <component name="RunManager" selected="JUnit.FileIOTests">
+  <component name="RunManager" selected="JUnit.ObjectFactoryTests">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="org.kentonbandy.Main" />
       <module name="RPTA" />
@@ -149,8 +136,41 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ObjectFactoryTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="RPTA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.kentonbandy.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.kentonbandy" />
+      <option name="MAIN_CLASS_NAME" value="org.kentonbandy.ObjectFactoryTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ObjectFactoryTests.buildAttack_builds_attack" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="RPTA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.kentonbandy.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.kentonbandy" />
+      <option name="MAIN_CLASS_NAME" value="org.kentonbandy.ObjectFactoryTests" />
+      <option name="METHOD_NAME" value="buildAttack_builds_attack" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ObjectFactoryTests" />
+        <item itemvalue="JUnit.ObjectFactoryTests.buildAttack_builds_attack" />
         <item itemvalue="JUnit.FileIOTests" />
         <item itemvalue="Application.Main" />
       </list>
@@ -180,5 +200,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
