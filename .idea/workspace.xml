@@ -6,8 +6,28 @@
   <component name="ChangeListManager">
     <list default="true" id="961fc4ee-a892-44f2-802f-b6eca3ebc45d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kentonbandy/ObjectFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kentonbandy/ObjectFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kentonbandy/AdventureLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kentonbandy/AdventureLoop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kentonbandy/CliPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kentonbandy/UI/CliOut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kentonbandy/DataLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kentonbandy/DAO/DataLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kentonbandy/DataWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kentonbandy/DAO/DataWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kentonbandy/FileIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kentonbandy/DAO/CsvLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kentonbandy/Input.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kentonbandy/UI/Input.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kentonbandy/ObjectFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kentonbandy/DAO/ObjectFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kentonbandy/Output.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kentonbandy/UI/Output.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kentonbandy/character/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kentonbandy/character/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kentonbandy/notes.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/json_structure.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/kentonbandy/FileIOTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/kentonbandy/CsvLoaderTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/kentonbandy/ObjectFactoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/kentonbandy/ObjectFactoryTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/kentonbandy/AdventureLoop.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/kentonbandy/AdventureLoop.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/kentonbandy/CliPrinter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/kentonbandy/DataLoader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/kentonbandy/DataWriter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/kentonbandy/FileIO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/kentonbandy/Input.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/kentonbandy/Output.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/kentonbandy/character/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/kentonbandy/character/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/kentonbandy/FileIOTests.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,27 +124,17 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
-  <component name="RunManager" selected="JUnit.ObjectFactoryTests">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="org.kentonbandy.Main" />
-      <module name="RPTA" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FileIOTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.org.kentonbandy in RPTA">
+    <configuration name="CsvLoaderTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="RPTA" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.kentonbandy.*" />
+          <option name="PATTERN" value="org.kentonbandy.DAO.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.kentonbandy" />
-      <option name="MAIN_CLASS_NAME" value="org.kentonbandy.FileIOTests" />
+      <option name="MAIN_CLASS_NAME" value="org.kentonbandy.CsvLoaderTests" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -134,7 +144,7 @@
       <module name="RPTA" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.kentonbandy.*" />
+          <option name="PATTERN" value="org.kentonbandy.DAO.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -149,7 +159,7 @@
       <module name="RPTA" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.kentonbandy.*" />
+          <option name="PATTERN" value="org.kentonbandy.DAO.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -165,7 +175,7 @@
       <module name="RPTA" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.kentonbandy.*" />
+          <option name="PATTERN" value="org.kentonbandy.DAO.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -177,13 +187,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="org.kentonbandy in RPTA" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="RPTA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.kentonbandy.DAO.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.kentonbandy" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.org.kentonbandy in RPTA" />
         <item itemvalue="JUnit.ObjectFactoryTests" />
         <item itemvalue="JUnit.ObjectFactoryTests.buildItemsMap_builds_items" />
         <item itemvalue="JUnit.ObjectFactoryTests.buildAttack_builds_attack" />
-        <item itemvalue="JUnit.FileIOTests" />
-        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.CsvLoaderTests" />
       </list>
     </recent_temporary>
   </component>
@@ -218,7 +242,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/org/kentonbandy/ObjectFactoryTests.java</url>
-          <line>65</line>
+          <line>66</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>

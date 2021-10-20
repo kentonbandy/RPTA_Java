@@ -1,4 +1,4 @@
-package org.kentonbandy;
+package org.kentonbandy.DAO;
 
 import org.kentonbandy.action.Attack;
 import org.kentonbandy.item.Armor;

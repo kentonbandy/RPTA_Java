@@ -1,16 +1,16 @@
 package org.kentonbandy;
 
 import org.junit.*;
-import org.kentonbandy.FileIO;
+import org.kentonbandy.DAO.CsvLoader;
+import org.kentonbandy.DAO.DataLoader;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class FileIOTests {
+public class CsvLoaderTests {
     @Test
     public void loadGameData_creates_good_map_file() {
-        DataLoader loader = new FileIO();
+        DataLoader loader = new CsvLoader();
         Map<String, List<String>> gameFile = loader.loadGameData();
 
         String result1 = gameFile.get("attack").get(4);

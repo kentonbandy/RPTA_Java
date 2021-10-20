@@ -3,6 +3,7 @@ package org.kentonbandy;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.kentonbandy.DAO.ObjectFactory;
 import org.kentonbandy.action.Attack;
 import org.kentonbandy.item.Armor;
 import org.kentonbandy.item.Item;

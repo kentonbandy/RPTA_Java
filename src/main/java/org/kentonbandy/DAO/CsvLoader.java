@@ -1,10 +1,12 @@
-package org.kentonbandy;
+package org.kentonbandy.DAO;
+
+import org.kentonbandy.UI.Output;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
-public class FileIO implements DataLoader {
+public class CsvLoader implements DataLoader {
     private File filePath;
     private List<String> objectTypes = new ArrayList<>(List.of(
             "ATTACK",
@@ -15,11 +17,11 @@ public class FileIO implements DataLoader {
             "SHOP OWNER",
             "LOCATION"));
 
-    public FileIO() {
+    public CsvLoader() {
         this.filePath = new File("src/main/resources/microcosm_database.csv");
     }
 
-    public FileIO(String filePath) {
+    public CsvLoader(String filePath) {
         this.filePath = new File(filePath);
     }
 

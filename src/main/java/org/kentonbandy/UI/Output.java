@@ -1,4 +1,4 @@
-package org.kentonbandy;
+package org.kentonbandy.UI;
 
 public interface Output {
     public static void error(String message) {}

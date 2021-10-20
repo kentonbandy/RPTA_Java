@@ -1,6 +1,7 @@
-package org.kentonbandy;
+package org.kentonbandy.UI;
 
 
+import org.kentonbandy.Location;
 import org.kentonbandy.character.Player;
 import org.kentonbandy.item.Currency;
 import org.kentonbandy.item.Item;
@@ -8,7 +9,7 @@ import org.kentonbandy.item.Item;
 import java.util.List;
 import java.util.Scanner;
 
-public class CliPrinter implements Output{
+public class CliOut implements Output {
     private static Scanner scanner = new Scanner(System.in);
 
     private static int defaultWidth = 60;

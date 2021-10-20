@@ -1,13 +1,15 @@
 package org.kentonbandy;
 
+import org.kentonbandy.UI.CliOut;
+
 public class AdventureLoop {
     private static Location currentLocation;
 
 
     public static void run() {
         while (true) {
-            CliPrinter.atLocation(currentLocation);
-            String input = CliPrinter.prompt();
+            CliOut.atLocation(currentLocation);
+            String input = CliOut.prompt();
         }
     }
 
