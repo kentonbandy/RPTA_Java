@@ -23,9 +23,9 @@ Bench|You've been bench pressed! How does this cause damage? No one knows!|5|6
 
 ITEM
 name|description|price|gettable
-Snack|Your favorite pre-packaged salty snack. Heals HP by 40% up to max.|10|40|true
-Soda|A bottle of your favorite carbonated sugar drink. Replenishes MP by 40% up to max.|10|40|false
-"Magic" Brownie|Travis's mom might have neglected to mention a key ingredient in this dank brownie. It's unclear what effect it will have.|20|100|false
+Snack|Your favorite pre-packaged salty snack. Heals HP by 40% up to max.|10|true
+Soda|A bottle of your favorite carbonated sugar drink. Replenishes MP by 40% up to max.|10|true
+"Magic" Brownie|Travis's mom might have neglected to mention a key ingredient in this dank brownie. It's unclear what effect it will have.|20|false
 Ribs|Succulent, Juicy ribs seasoned and cooked to perfection.|0|true
 Beverage|You're not sure what's in it but it's sure to be ... effective.|0|true
 

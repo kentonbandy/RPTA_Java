@@ -3,11 +3,12 @@ package org.kentonbandy.item;
 public class Armor extends Item {
     private int defense;
 
+
     /**
      * @param name
      * @param description
-     * @param defense
      * @param price
+     * @param defense
      */
     public Armor(String name, String description, int price, int defense) {
         super(name, description, price);

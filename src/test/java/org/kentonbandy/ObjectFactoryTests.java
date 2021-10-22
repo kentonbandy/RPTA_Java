@@ -39,9 +39,9 @@ public class ObjectFactoryTests {
 
     @Test
     public void buildAttack_builds_attack() {
-        Map<String,Attack> attackList = factory.buildAttacksMap();
-        Attack attack1 = attackList.get("Zap");
-        Attack attack2 = attackList.get("Spitball");
+        Map<String,Attack> attackMap = factory.buildAttacksMap();
+        Attack attack1 = attackMap.get("Zap");
+        Attack attack2 = attackMap.get("Spitball");
 
         String result1 = attack1.getName();
         String expected1 = "Zap";
@@ -59,28 +59,54 @@ public class ObjectFactoryTests {
         Assert.assertEquals(expected3, result3);
         Assert.assertEquals(expected4, result4);
         Assert.assertEquals(expected5, result5);
-        Assert.assertEquals(2, attackList.keySet().size());
+        Assert.assertEquals(2, attackMap.keySet().size());
     }
 
     @Test
     public void buildItemsMap_builds_items() {
-        Map<String,Attack> attacksMap = factory.buildAttacksMap();
-        Map<String,Item> itemMap = factory.buildItemsMap(attacksMap);
-
-
+        Map<String,Item> itemMap = factory.buildItemMap();
         Item item = itemMap.get("Snack");
-        Armor armor = (Armor)itemMap.get("Police Helmet");
         Weapon weapon = (Weapon)itemMap.get("Glasses");
 
         String result1 = item.getName();
         String expected1 = "Snack";
+        String result2 = item.getDescription();
+        int result3 = item.getPrice();
+        boolean result4 = item.isGettable();
+
+        Assert.assertEquals("Snack", result1);
+        Assert.assertEquals("Your favorite pre-packaged salty snack. Heals HP by 40% up to max.", result2);
+        Assert.assertEquals(10, result3);
+        Assert.assertTrue(result4);
+    }
+
+    @Test
+    public void buildArmorMap_builds_armors() {
+        Map<String,Armor> armorMap = factory.buildArmorMap();
+        Armor armor = armorMap.get("Police Helmet");
+        String result1 = armor.getName();
         String result2 = armor.getDescription();
-        String expected2 = "A flimsy toy police helmet. It offers a surprising amount of protection.";
-        int result3 = weapon.getPrice();
-        int expected3 = 5;
-        int result4 = weapon.getPower(weapon.getAttackList().get(0));
-        int expected4 = 5;
-        int result5 = itemMap.size();
-        int expected5 = 3;
+        int result3 = armor.getPrice();
+        int result4 = armor.getDefense();
+        boolean result5 = armor.isGettable();
+
+        Assert.assertEquals("Police Helmet", result1);
+        Assert.assertEquals("A flimsy toy police helmet. It offers a surprising amount of protection.", result2);
+        Assert.assertEquals(15, result3);
+        Assert.assertEquals(10, result4);
+        Assert.assertTrue(result5);
+    }
+
+    @Test
+    public void buildWeaponMap_builds_weapons() {
+        Map<String,Attack> attackMap = factory.buildAttacksMap();
+        Map<String,Weapon> weaponMap = factory.buildWeaponMap(attackMap);
+        Weapon weapon = weaponMap.get("Glasses");
+
+        Assert.assertEquals("Glasses", weapon.getName());
+        Assert.assertEquals("A pair of bombastic bifocals.", weapon.getDescription());
+        Assert.assertEquals(5, weapon.getPrice());
+        Assert.assertEquals(5, weapon.getPrice());
+        Assert.assertEquals("Zap", weapon.getAttackList().get(0).getName());
     }
 }

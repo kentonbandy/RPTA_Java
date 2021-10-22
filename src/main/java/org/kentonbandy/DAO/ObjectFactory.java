@@ -1,6 +1,9 @@
 package org.kentonbandy.DAO;
 
+import org.kentonbandy.Location;
 import org.kentonbandy.action.Attack;
+import org.kentonbandy.character.Enemy;
+import org.kentonbandy.character.ShopOwner;
 import org.kentonbandy.item.Armor;
 import org.kentonbandy.item.Item;
 import org.kentonbandy.item.Weapon;
@@ -32,6 +35,76 @@ public class ObjectFactory {
         return map;
     }
 
+    public Map<String,Item> buildItemMap() {
+        List<Item> items = new ArrayList<>();
+        Map<String,Item> itemMap = new HashMap<>();
+        List<String> lines = gameData.get("item");
+        for (String line : lines) {
+            String[] arr = line.split("\\|");
+            items.add(buildItem(arr));
+        }
+        for (Item item : items) {
+            if (item != null) itemMap.put(item.getName(), item);
+        }
+        return itemMap;
+    }
+
+    public Map<String,Armor> buildArmorMap() {
+        List<Armor> armors = new ArrayList<>();
+        Map<String,Armor> armorMap = new HashMap<>();
+        List<String> lines = gameData.get("armor");
+        for (String line : lines) {
+            String[] arr = line.split("\\|");
+            armors.add(buildArmor(arr));
+        }
+        for (Armor armor : armors) {
+            if (armor != null) armorMap.put(armor.getName(), armor);
+        }
+        return armorMap;
+    }
+
+    public Map<String,Weapon> buildWeaponMap(Map<String,Attack> attackMap) {
+        List<Weapon> weapons = new ArrayList<>();
+        Map<String,Weapon> weaponMap = new HashMap<>();
+        List<String> lines = gameData.get("weapon");
+        for (String line : lines) {
+            String[] arr = line.split("\\|");
+            weapons.add(buildWeapon(arr, attackMap));
+        }
+        for (Weapon weapon : weapons) {
+            if (weapon != null) weaponMap.put(weapon.getName(), weapon);
+        }
+        return weaponMap;
+    }
+
+    public Map<String, Enemy> buildEnemyMap(Map<String,Item> worldItems, Map<String,Armor> worldArmors, Map<String,Weapon> worldWeapons) {
+        Map<String,Enemy> enemyMap = new HashMap<>();
+        List<String> lines = gameData.get("enemy");
+        List<Enemy> enemies = new ArrayList<>();
+        for (String line : lines) {
+            String[] arr = line.split("\\|");
+            enemies.add(buildEnemy(arr, worldItems, worldArmors, worldWeapons));
+        }
+        for (Enemy enemy : enemies) {
+            if (enemy != null) enemyMap.put(enemy.getName(), enemy);
+        }
+        return enemyMap;
+    }
+
+    public Map<String, Location> buildLocationMap(Map<String,Item> worldItems, Map<String,Enemy> worldEnemies, Map<String, ShopOwner> shops) {
+        List<Location> locations = new ArrayList<>();
+        Map<String,Location> locationMap = new HashMap<>();
+        List<String> lines = gameData.get("location");
+        for (String line : lines) {
+            String[] arr = line.split("\\|");
+            locations.add(buildLocation(arr, worldItems, worldEnemies, shops));
+        }
+        for (Location loc : locations) {
+            if (loc != null) locationMap.put(loc.getName(), loc);
+        }
+        return locationMap;
+    }
+
     private Attack buildAttack(String line) {
         String[] arr = line.split("\\|");
         Attack attack;
@@ -41,32 +114,6 @@ public class ObjectFactory {
             attack = new Attack(arr[0], arr[1], Integer.parseInt(arr[2]), Integer.parseInt(arr[3]));
         } else return null;
         return attack;
-    }
-
-    public Map<String,Item> buildItemsMap(Map<String, Attack> attacksMap) {
-        // This list is populated with items, armor, and weapons!
-        List<Item> items = new ArrayList<>();
-        String[] keys = {"item", "armor", "weapon"};
-        for (String key : keys) {
-            List<String> lines = gameData.get(key);
-            for (String line : lines) {
-                String[] arr = line.split("\\|");
-                int len = arr.length;
-                if (len < 3 || len > 5) continue;
-                if (key.equals("item")) {
-                    if (len > 4) continue;
-                    else items.add(buildItem(arr));
-                } else if (len < 4) continue;
-                else if (key.equals("armor")) items.add(buildArmor(arr));
-                else items.add(buildWeapon(arr, attacksMap));
-            }
-        }
-        Map<String,Item> map = new HashMap<>();
-        for (Item item : items) {
-            if (item == null) continue;
-            map.put(item.getName(), item);
-        }
-        return map;
     }
 
     private Item buildItem(String[] arr) {
@@ -103,5 +150,37 @@ public class ObjectFactory {
             weapon = new Weapon(arr[0], arr[1], Integer.parseInt(arr[2]), attacks, Boolean.parseBoolean(arr[4]));
         }
         return weapon;
+    }
+
+    private Enemy buildEnemy(String[] arr, Map<String,Item> worldItems, Map<String,Armor> worldArmors, Map<String,Weapon> worldWeapons) {
+        Enemy enemy = null;
+        if (arr.length == 7) {
+            String[] itemStrings = arr[3].split(",");
+            List<Item> items = new ArrayList<>();
+            for (String s : itemStrings) {
+                items.add(worldItems.get(s));
+            }
+            enemy = new Enemy(arr[0], arr[1], Integer.parseInt(arr[2]), items, Integer.parseInt(arr[4]),
+                    worldArmors.get(arr[5]), worldWeapons.get(arr[6]));
+        }
+        return enemy;
+    }
+
+    private Location buildLocation(String[] arr, Map<String,Item> worldItems, Map<String,Enemy> worldEnemies, Map<String, ShopOwner> shops) {
+        Location location = null;
+        if (arr.length == 8) {
+            List<Item> items = new ArrayList<>();
+            List<Enemy> enemies = new ArrayList<>();
+            ShopOwner shop = shops.get(arr[5]);
+            Map<String,String> map = new HashMap<>();
+            for (String s : arr[2].split(",")) items.add(worldItems.get(s));
+            for (String s : arr[3].split(",")) enemies.add(worldEnemies.get(s));
+            for (String s : arr[7].split(",")) {
+                String[] keyVal = s.split(":");
+                map.put(keyVal[0], keyVal[1]);
+            }
+            location = new Location(arr[0], arr[1], items, enemies, shop, Boolean.parseBoolean(arr[6]), map);
+        }
+        return location;
     }
 }

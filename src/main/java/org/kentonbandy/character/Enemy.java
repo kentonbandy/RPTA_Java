@@ -8,22 +8,13 @@ import java.util.List;
 
 public class Enemy extends Character {
     private int level;
-    private Attack attack;
     private Armor armor;
     private Weapon weapon;
     private int hp;
     private Item triggerItem;
 
 
-    /**
-     * @param name
-     * @param description
-     * @param currency
-     * @param inventory
-     * @param level
-     * @param armor
-     * @param weapon
-     */
+
     public Enemy(String name, String description, int currency, List<Item> inventory, int level, Armor armor,
                  Weapon weapon) {
         super(name, description, currency, inventory);
@@ -75,8 +66,8 @@ public class Enemy extends Character {
         return level;
     }
 
-    public Attack getAttack() {
-        return attack;
+    public List<Attack> getAttack() {
+        return weapon.getAttackList();
     }
 
     public Armor getArmor() {
@@ -96,13 +87,6 @@ public class Enemy extends Character {
      */
     public void setLevel(int level) {
         this.level = level;
-    }
-
-    /**
-     * @param attack
-     */
-    public void setAttack(Attack attack) {
-        this.attack = attack;
     }
 
     /**

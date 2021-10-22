@@ -2,9 +2,6 @@ package org.kentonbandy.item;
 
 import org.kentonbandy.Sellable;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Item implements Sellable {
     private String name;
     private String description;
@@ -34,6 +31,13 @@ public class Item implements Sellable {
 
     public void makeGettable() {
         gettable = true;
+    }
+
+    public String getItemType() {
+        Class<? extends Item> c = this.getClass();
+        if (c == Item.class) return "Item";
+        else if (c == Armor.class) return "Armor";
+        else return "Weapon";
     }
 
     @Override

@@ -15,28 +15,26 @@ public class Location {
     private List<Enemy> enemies;
     private ShopOwner shop;
     private boolean isSafe;
-    private Map<String,Location> map = new HashMap<>();
+    private Map<String,String> map = new HashMap<>();
 
     /**
      * @param name display name for the Location
      * @param description text that will display for this Location
      * @apiNote an empty items List and directions Map will be created upon instantiation
      */
-    public Location(String name, String description) {
+    public Location(String name, String description, List<Item> items, List<Enemy> enemies, ShopOwner shop,
+                    boolean isSafe, Map<String,String> map) {
         this.name = name;
         this.description = description;
-        items = new ArrayList<>();
-        enemies = new ArrayList<>();
-        isSafe = true;
-        map = new HashMap<>();
+        this.items = items;
+        this.enemies = enemies;
+        this.shop = shop;
+        this.isSafe = isSafe;
+        this.map = map;
     }
 
-    /**
-     * @param direction
-     * @param location
-     */
-    public void addExit(String direction, Location location) {
-        map.put(direction, location);
+    public void addExit(String direction, String locationName) {
+        map.put(direction, locationName);
     }
 
     public void addItem(Item item) {

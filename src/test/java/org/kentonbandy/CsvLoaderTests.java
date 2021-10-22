@@ -2,7 +2,6 @@ package org.kentonbandy;
 
 import org.junit.*;
 import org.kentonbandy.DAO.CsvLoader;
-import org.kentonbandy.DAO.DataLoader;
 
 import java.util.List;
 import java.util.Map;
@@ -10,14 +9,14 @@ import java.util.Map;
 public class CsvLoaderTests {
     @Test
     public void loadGameData_creates_good_map_file() {
-        DataLoader loader = new CsvLoader();
+        CsvLoader loader = new CsvLoader();
         Map<String, List<String>> gameFile = loader.loadGameData();
 
         String result1 = gameFile.get("attack").get(4);
         String expected1 = "Blast|A disorienting sonic blast!|6";
 
         String result2 = gameFile.get("item").get(0);
-        String expected2 = "Snack|Your favorite pre-packaged salty snack. Heals HP by 40% up to max.|10|40|true";
+        String expected2 = "Snack|Your favorite pre-packaged salty snack. Heals HP by 40% up to max.|10|true";
 
         String result3 = gameFile.get("armor").get(7);
         String expected3 = "Jock Strap|You know what it is. Protects the wearer from the most severe of attacks|4|2";
