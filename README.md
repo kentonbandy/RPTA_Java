@@ -1,5 +1,6 @@
 # RPTA
 Role Playing Text Adventure
+(in progress)
 
 I've been wanting to make a text adventure since I learned to code in 2019, and I think I finally have the skills to
 do it (fingers crossed). I'm going for some advanced TA mechanics with RPG style elements like battle mechanics and
