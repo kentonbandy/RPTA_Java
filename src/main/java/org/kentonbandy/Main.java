@@ -7,6 +7,7 @@ import org.kentonbandy.action.*;
 import org.kentonbandy.character.*;
 import org.kentonbandy.item.*;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -21,9 +22,6 @@ public class Main {
         ObjectFactory objectFactory = new ObjectFactory(dataLoader.loadGameData());
         World world = new World();
         world.buildWorld(objectFactory);
-
-        Map<String,Location> locations = world.getLocations();
-        System.out.println(locations);
 
         /*
         Game start screen

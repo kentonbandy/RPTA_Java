@@ -91,6 +91,12 @@ public class ObjectFactory {
         return enemyMap;
     }
 
+    public Map<String,ShopOwner> buildShopOwnerMap(Map<String,Item> worldItems) {
+        Map<String,ShopOwner> shops = new HashMap<>();
+
+        return shops;
+    }
+
     public Map<String, Location> buildLocationMap(Map<String,Item> worldItems, Map<String,Enemy> worldEnemies, Map<String, ShopOwner> shops) {
         List<Location> locations = new ArrayList<>();
         Map<String,Location> locationMap = new HashMap<>();
@@ -166,20 +172,34 @@ public class ObjectFactory {
         return enemy;
     }
 
+    private ShopOwner buildShopOwner(String[] arr, Map<String,Item> worldItems) {
+        ShopOwner shop = null;
+        if (arr.length == 6) {
+            List<Item> items = new ArrayList<>();
+            for (String item : arr[3].split(",")) items.add(worldItems.get(item));
+            shop = new ShopOwner(arr[0], arr[1], Integer.parseInt(arr[2]), items, arr[4], arr[5]);
+        }
+        return shop;
+    }
+
     private Location buildLocation(String[] arr, Map<String,Item> worldItems, Map<String,Enemy> worldEnemies, Map<String, ShopOwner> shops) {
         Location location = null;
-        if (arr.length == 8) {
+        if (arr.length == 7) {
             List<Item> items = new ArrayList<>();
             List<Enemy> enemies = new ArrayList<>();
-            ShopOwner shop = shops.get(arr[5]);
+            ShopOwner shop = null;
+            if (!arr[5].equals("")) shop = shops.get(arr[5]);
             Map<String,String> map = new HashMap<>();
-            for (String s : arr[2].split(",")) items.add(worldItems.get(s));
-            for (String s : arr[3].split(",")) enemies.add(worldEnemies.get(s));
-            for (String s : arr[7].split(",")) {
+            String[] strings = arr[3].split(",");
+            for (String s : arr[3].split(",")) {
+                items.add(worldItems.get(s));
+            }
+            for (String s : arr[4].split(",")) enemies.add(worldEnemies.get(s));
+            for (String s : arr[6].split(",")) {
                 String[] keyVal = s.split(":");
                 map.put(keyVal[0], keyVal[1]);
             }
-            location = new Location(arr[0], arr[1], items, enemies, shop, Boolean.parseBoolean(arr[6]), map);
+            location = new Location(arr[0], arr[1], Boolean.parseBoolean(arr[2]), items, enemies, shop, map);
         }
         return location;
     }

@@ -30,6 +30,7 @@ public class World {
         weapons = factory.buildWeaponMap(attacks);
         buildAggregateItems();
         enemies = factory.buildEnemyMap(items, armors, weapons);
+        shopOwners = factory.buildShopOwnerMap(aggregateItems);
         locations = factory.buildLocationMap(aggregateItems, enemies, shopOwners);
     }
 
@@ -42,6 +43,34 @@ public class World {
 
     public Map<String, Location> getLocations() {
         return locations;
+    }
+
+    public Map<String, Attack> getAttacks() {
+        return attacks;
+    }
+
+    public Map<String, Item> getItems() {
+        return items;
+    }
+
+    public Map<String, Armor> getArmors() {
+        return armors;
+    }
+
+    public Map<String, Weapon> getWeapons() {
+        return weapons;
+    }
+
+    public Map<String, Item> getAggregateItems() {
+        return aggregateItems;
+    }
+
+    public Map<String, Enemy> getEnemies() {
+        return enemies;
+    }
+
+    public Map<String, ShopOwner> getShopOwners() {
+        return shopOwners;
     }
 
     public void setLocations(Map<String, Location> locations) {

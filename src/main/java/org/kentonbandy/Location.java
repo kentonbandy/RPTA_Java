@@ -11,10 +11,10 @@ import java.util.Map;
 public class Location {
     private String name;
     private String description;
+    private boolean isSafe;
     private List<Item> items;
     private List<Enemy> enemies;
     private ShopOwner shop;
-    private boolean isSafe;
     private Map<String,String> map = new HashMap<>();
 
     /**
@@ -22,14 +22,14 @@ public class Location {
      * @param description text that will display for this Location
      * @apiNote an empty items List and directions Map will be created upon instantiation
      */
-    public Location(String name, String description, List<Item> items, List<Enemy> enemies, ShopOwner shop,
-                    boolean isSafe, Map<String,String> map) {
+    public Location(String name, String description, boolean isSafe, List<Item> items, List<Enemy> enemies,
+                    ShopOwner shop, Map<String,String> map) {
         this.name = name;
         this.description = description;
+        this.isSafe = isSafe;
         this.items = items;
         this.enemies = enemies;
         this.shop = shop;
-        this.isSafe = isSafe;
         this.map = map;
     }
 
