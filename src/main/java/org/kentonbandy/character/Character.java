@@ -81,4 +81,9 @@ public class Character {
     public void setCurrency(int currency) {
         this.currency = currency;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

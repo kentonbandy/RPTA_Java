@@ -9,7 +9,7 @@ import org.kentonbandy.item.Item;
 import java.util.List;
 import java.util.Scanner;
 
-public class CliOut implements Output {
+public class CliInOut implements Output {
     private static Scanner scanner = new Scanner(System.in);
 
     private static int defaultWidth = 60;
@@ -30,13 +30,13 @@ public class CliOut implements Output {
         atLocation(location, defaultWidth);
     }
 
-    public static void levelUp() {
+    public static void levelUp(Player player) {
         newLines(1);
         printUppercase("level up!!!");
         newLines(1);
-        System.out.println("Level " + Player.getLevel() + "!");
-        System.out.println("HP: " + Player.calculateHp(Player.getLevel() - 1) + " --> " + Player.getHp());
-        System.out.println("MP: " + Player.calculateMp(Player.getLevel() - 1) + " --> " + Player.getMp());
+        System.out.println("Level " + player.getLevel() + "!");
+        System.out.println("HP: " + player.calculateHp(player.getLevel() - 1) + " --> " + player.getHp());
+        System.out.println("MP: " + player.calculateMp(player.getLevel() - 1) + " --> " + player.getMp());
         }
 
     public static String wordWrap(String string, int width) {
@@ -72,8 +72,8 @@ public class CliOut implements Output {
         System.out.println(string.toUpperCase());
     }
 
-    public static void printInventory() {
-        List<Item> list = Player.getInventory();
+    public static void printInventory(Player player) {
+        List<Item> list = player.getInventory();
         int size = list.size();
         System.out.print("Inventory: ");
         if (size == 0) System.out.println("empty!");
@@ -81,7 +81,7 @@ public class CliOut implements Output {
             if (i == size - 1) System.out.println(list.get(i).getName());
             else System.out.print(list.get(i).getName() + ", ");
         }
-        System.out.println(Currency.getCurrencyName() + ": " + Player.getCurrencyAmount());
+        System.out.println(Currency.getCurrencyName() + ": " + player.getCurrencyAmount());
     }
 
     public static void setDefaultWidth(int width) {

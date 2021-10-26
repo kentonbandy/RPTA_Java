@@ -22,6 +22,13 @@ public class Main {
         ObjectFactory objectFactory = new ObjectFactory(dataLoader.loadGameData());
         World world = new World();
         world.buildWorld(objectFactory);
+        AdventureLoop loop = new AdventureLoop();
+        loop.setCurrentLocation(world.getLocations().get("WHS"));
+        Player player = new Player("Kenny", "A high school student that should probably be doing homework.", 0, new ArrayList<Item>(List.of()), 1, world.getArmors().get("Shirt"), world.getWeapons().get("Backpack"));
+
+        loop.run();
+
+
 
         /*
         Game start screen

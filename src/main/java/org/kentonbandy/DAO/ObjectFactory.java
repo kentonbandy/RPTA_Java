@@ -92,9 +92,17 @@ public class ObjectFactory {
     }
 
     public Map<String,ShopOwner> buildShopOwnerMap(Map<String,Item> worldItems) {
-        Map<String,ShopOwner> shops = new HashMap<>();
-
-        return shops;
+        Map<String,ShopOwner> shopMap = new HashMap<>();
+        List<String> lines = gameData.get("shop owner");
+        List<ShopOwner> shops = new ArrayList<>();
+        for (String line : lines) {
+            String[] arr = line.split("\\|");
+            shops.add(buildShopOwner(arr, worldItems));
+        }
+        for (ShopOwner shop : shops) {
+            if (shop != null) shopMap.put(shop.getName(), shop);
+        }
+        return shopMap;
     }
 
     public Map<String, Location> buildLocationMap(Map<String,Item> worldItems, Map<String,Enemy> worldEnemies, Map<String, ShopOwner> shops) {

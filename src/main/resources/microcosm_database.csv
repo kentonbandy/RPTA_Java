@@ -65,7 +65,7 @@ Cashier|A recent high school graduate who looks like they'd rather not be there.
 
 LOCATION
 name|description|isSafe|items|enemies|shop|map
-WHS|You're in front of a red brick school that has bees painted all over the interior. The vice principal is walking toward you.|true||vicePrincipal||west:Crossroads,north:Zach's House,east:Park
+WHS|You're in front of a red brick school that has bees painted all over the interior. The vice principal is walking toward you.|true||Vice Principal||west:Crossroads,north:Zach's House,east:Park
 Crossroads|The road splits. To the North you see a yellow house. To the West you see a non-yellow house.|false||Punk Kid,Nerd,Jock||north:Farr's House,west:Travis's House,east:WHS
 Zach's House|You arrive at a hulking structure in it's own forest on an unassuming street corner. A tiny white dog comes running at you. Farr's house is to the west, WHS is to the south, and a corner store is to the east.|true||Tank||south:WHS,east:Corner Store,west:Farr's House,in:Inside Zach's House
 Inside Zach's House|You're in a spacious house that you recognize as zach's. Tank's toys adorn much of the interior. Is that... a police helmet??|true|Police Helmet|||out:Zach's House
