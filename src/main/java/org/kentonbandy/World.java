@@ -1,6 +1,5 @@
 package org.kentonbandy;
 
-import org.kentonbandy.DAO.DataLoader;
 import org.kentonbandy.DAO.ObjectFactory;
 import org.kentonbandy.action.Attack;
 import org.kentonbandy.character.Enemy;
@@ -10,7 +9,6 @@ import org.kentonbandy.item.Item;
 import org.kentonbandy.item.Weapon;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class World {

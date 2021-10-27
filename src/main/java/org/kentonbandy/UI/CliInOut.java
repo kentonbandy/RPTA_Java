@@ -14,10 +14,6 @@ public class CliInOut implements Output {
 
     private static int defaultWidth = 60;
 
-    public static void error(String message) {
-        System.out.println(message);
-    }
-
     public static void atLocation(Location location, int wrapWidth) {
         newLines(20);
         printUppercase(location.getName());
@@ -92,5 +88,9 @@ public class CliInOut implements Output {
         System.out.print(">>> ");
         String input = scanner.nextLine();
         return input;
+    }
+
+    public static void error(String message) {
+        System.out.println("\n!!! " + message + " !!!\n");
     }
 }
