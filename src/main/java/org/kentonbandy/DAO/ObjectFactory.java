@@ -211,4 +211,8 @@ public class ObjectFactory {
         }
         return location;
     }
+
+    public Location getStartLocation(Map<String,Location> locations) {
+        return locations.get(gameData.get("start location").get(0));
+    }
 }

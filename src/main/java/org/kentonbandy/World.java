@@ -20,6 +20,7 @@ public class World {
     private Map<String,Enemy> enemies;
     private Map<String,ShopOwner> shopOwners;
     private Map<String,Location> locations;
+    private Location startLocation;
 
     public void buildWorld(ObjectFactory factory) {
         attacks = factory.buildAttacksMap();
@@ -30,6 +31,7 @@ public class World {
         enemies = factory.buildEnemyMap(items, armors, weapons);
         shopOwners = factory.buildShopOwnerMap(aggregateItems);
         locations = factory.buildLocationMap(aggregateItems, enemies, shopOwners);
+        startLocation = factory.getStartLocation(locations);
     }
 
     private void buildAggregateItems() {
@@ -69,6 +71,14 @@ public class World {
 
     public Map<String, ShopOwner> getShopOwners() {
         return shopOwners;
+    }
+
+    public Location getStartLocation() {
+        return startLocation;
+    }
+
+    public void setStartLocation(Location startLocation) {
+        this.startLocation = startLocation;
     }
 
     public void setLocations(Map<String, Location> locations) {

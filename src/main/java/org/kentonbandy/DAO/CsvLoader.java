@@ -15,7 +15,8 @@ public class CsvLoader implements DataLoader {
             "WEAPON",
             "ENEMY",
             "SHOP OWNER",
-            "LOCATION"));
+            "LOCATION",
+            "START LOCATION"));
 
     public CsvLoader() {
         this.filePath = new File("src/main/resources/microcosm_database.csv");
@@ -44,7 +45,6 @@ public class CsvLoader implements DataLoader {
                 }
             }
         } catch (FileNotFoundException e) {
-            Output.error("The New Game source file can't be found!");
             return null;
         }
         return gameData;

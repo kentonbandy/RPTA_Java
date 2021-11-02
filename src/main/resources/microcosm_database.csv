@@ -75,3 +75,8 @@ Farr's House|An unambiguously yellow house stands before you. Farr's mom sees yo
 Travis's House|You're at the door of a house on the corner of an attractive development. Travis's mom opens the door and says "I have no idea where Travis is but I just made brownies! Want one?". You see another house to the West.|true|Brownie|||west:Wood's House,east:Crossroads
 Wood's House|You approach a house with a fleet of various trucks, jeeps, and cars. Chances are Wood and Zach are inside.|true||||in:Inside Wood's House,east:Travis's House
 Inside Wood's House|As expected, you see Wood and Zach at the dining room table, laptops out, playing World of Gamecraft. Fresh ribs have just come out of the oven and are resting on the counter. Wood and Zach beckon you to join them.|true|Ribs,Beverage|||out:Wood's House
+Test Area|Hello, welcome to the test area! This area holds all of the game objects.|true|Snack,Soda,"Magic" Brownie,Ribs,Beverage,Shirt,Leather Jacket,Police Helmet,Blazer,Fur Coat,Spike Choker,Pocket Protector,Jock Strap,Backpack,Stick,Mellophone,Clip-on Tie,Discolored Collar,Angst,Glasses,Ego|Vice Principal,Tank,Punk Kid,Nerd,Jock|Cashier|north:WHS
+
+START LOCATION
+---
+Test Area

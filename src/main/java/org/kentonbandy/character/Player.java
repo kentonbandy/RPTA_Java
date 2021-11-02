@@ -1,7 +1,6 @@
 package org.kentonbandy.character;
 
-import org.kentonbandy.UI.CliInOut;
-import org.kentonbandy.action.Attack;
+import org.kentonbandy.UI.CliOut;
 import org.kentonbandy.item.*;
 import java.util.List;
 
@@ -17,9 +16,9 @@ public class Player extends Enemy {
     /**
      * Sets new level, Hp, and Mp values, all are set to full value
      */
-    public void levelUp() {
+    public int levelUp() {
         setLevel(getLevel() + 1, false);
-        CliInOut.levelUp(this);
+        return getLevel();
     }
 
     /**

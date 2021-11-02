@@ -9,24 +9,22 @@ import org.kentonbandy.item.Item;
 import java.util.List;
 import java.util.Scanner;
 
-public class CliInOut implements Output {
-    private static Scanner scanner = new Scanner(System.in);
+public class CliOut implements Output {
+    private final Scanner scanner = new Scanner(System.in);
+    private int defaultWidth = 60;
 
-    private static int defaultWidth = 60;
-
-    public static void atLocation(Location location, int wrapWidth) {
-        newLines(20);
+    public void atLocation(Location location, int wrapWidth) {
         printUppercase(location.getName());
         String desc = location.getDescription();
         System.out.println(wordWrap(desc, wrapWidth));
         newLines(1);
     }
 
-    public static void atLocation(Location location) {
+    public void atLocation(Location location) {
         atLocation(location, defaultWidth);
     }
 
-    public static void levelUp(Player player) {
+    public void levelUp(Player player) {
         newLines(1);
         printUppercase("level up!!!");
         newLines(1);
@@ -35,7 +33,7 @@ public class CliInOut implements Output {
         System.out.println("MP: " + player.calculateMp(player.getLevel() - 1) + " --> " + player.getMp());
         }
 
-    public static String wordWrap(String string, int width) {
+    public String wordWrap(String string, int width) {
         String[] wordArr = string.split(" ");
         String output = "";
         StringBuilder line = new StringBuilder();
@@ -54,21 +52,21 @@ public class CliInOut implements Output {
         return output;
     }
 
-    public static String wordWrap(String string) {
+    public String wordWrap(String string) {
         return wordWrap(string, 60);
     }
 
-    public static void newLines(int num) {
+    public void newLines(int num) {
         for (num=num; num>0; num--) {
             System.out.println();
         }
     }
 
-    public static void printUppercase(String string) {
+    public void printUppercase(String string) {
         System.out.println(string.toUpperCase());
     }
 
-    public static void printInventory(Player player) {
+    public void printInventory(Player player) {
         List<Item> list = player.getInventory();
         int size = list.size();
         System.out.print("Inventory: ");
@@ -80,17 +78,11 @@ public class CliInOut implements Output {
         System.out.println(Currency.getCurrencyName() + ": " + player.getCurrencyAmount());
     }
 
-    public static void setDefaultWidth(int width) {
+    public void setDefaultWidth(int width) {
         defaultWidth = width;
     }
 
-    public static String prompt() {
-        System.out.print(">>> ");
-        String input = scanner.nextLine();
-        return input;
-    }
-
-    public static void error(String message) {
+    public void error(String message) {
         System.out.println("\n!!! " + message + " !!!\n");
     }
 }
