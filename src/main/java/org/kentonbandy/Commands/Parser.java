@@ -41,18 +41,29 @@ public class Parser {
     private final Set<String> oneWordCommands = Set.of("inventory", "i", "look", "l");
 
     public Command buildCommand(String input, Location location) throws NoSuchActionException, EmptyCommandException, ItemNotFoundException {
-        List<String> lst = new ArrayList<> (Arrays.asList(input.toLowerCase().split(" ")));
+        Item item = null;
+        for (Item i : location.getItems()) {
+            String iName = i.getName().toLowerCase();
+            if (input.contains(iName)) {
+                input = input.replace(iName, iName.replaceAll(" ", ""));
+            }
+        }
+        List<String> lst = new ArrayList<> (Arrays.asList(input.split(" ")));
         lst.removeAll(ignored);
         if (lst.size() == 0) throw new EmptyCommandException();
         String action = lst.get(0);
-        if (lst.size() == 1) {
-        return buildOneWordCommand(action);
-        }
+        if (lst.size() == 1) return buildOneWordCommand(action);
         if (!actions.contains(action)) throw new NoSuchActionException();
-        Item item = getLocationItem(lst.get(1), location);
+        for (Item i : location.getItems()) {
+            String iName = i.getName().toLowerCase();
+            if (iName.replace(" ", "").equals(lst.get(1))) {
+                item = i;
+                break;
+            }
+        }
         if (item == null) throw new ItemNotFoundException();
         if (lst.size() == 2) return new Command(action, item.getName());
-        // todo: implement Targets (conditional  items)
+        // todo: implement Targets (conditional items)
         else if (lst.size() == 3) return new Command(action, item.getName(), lst.get(2));
         throw new NoSuchActionException();
     }
@@ -70,7 +81,7 @@ public class Parser {
 
     private Item getLocationItem(String itemName, Location location) {
         for (Item item : location.getItems()) {
-            if (item.getName().equals(itemName)) return item;
+            if (item.getName().toLowerCase().equals(itemName.toLowerCase())) return item;
         }
         return null;
     }

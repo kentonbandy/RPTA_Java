@@ -8,6 +8,6 @@ public class CliIn implements Input {
     public String prompt() {
         System.out.print(">>> ");
         String input = scanner.nextLine();
-        return input;
+        return input.toLowerCase();
     }
 }
