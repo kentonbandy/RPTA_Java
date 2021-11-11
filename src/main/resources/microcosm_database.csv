@@ -67,14 +67,14 @@ LOCATION
 name|description|isSafe|items|enemies|shop|map
 WHS|You're in front of a red brick school that has bees painted all over the interior. The vice principal is walking toward you.|true||Vice Principal||west:Crossroads,north:Zach's House,east:Park
 Crossroads|The road splits. To the North you see a yellow house. To the West you see a non-yellow house.|false||Punk Kid,Nerd,Jock||north:Farr's House,west:Travis's House,east:WHS
-Zach's House|You arrive at a hulking structure in it's own forest on an unassuming street corner. A tiny white dog comes running at you. Farr's house is to the west, WHS is to the south, and a corner store is to the east.|true||Tank||south:WHS,east:Corner Store,west:Farr's House,in:Inside Zach's House
-Inside Zach's House|You're in a spacious house that you recognize as zach's. Tank's toys adorn much of the interior. Is that... a police helmet??|true|Police Helmet|||out:Zach's House
+Zach's House|You arrive at a hulking structure in it's own forest on an unassuming street corner. A tiny white dog comes running at you. Farr's house is to the west, WHS is to the south, and a corner store is to the east.|true||Tank||south:WHS,east:Corner Store,west:Farr's House,inside:Inside Zach's House
+Inside Zach's House|You're in a spacious house that you recognize as zach's. Tank's toys adorn much of the interior. Is that... a police helmet??|true|Police Helmet|||outside:Zach's House
 Park|A bunch of kids are playing frisbee, swinging, making out, fighting, you know, what kids do. You take shelter from the sun under a Maple tree. WHS is to the west, a corner store is to the north.|false|Stick|Punk Kid,Nerd,Jock||west:WHS,north:Corner Store
 Corner Store|You've arrived at a Subway/gas station/convenience store. Usually a hot open lunch location for students, this shop has somehow run out of everything except Snacks and Sodas. The cashier eyes you suspiciously from the counter.|true|||Cashier|south:Park,west:Zach's House
 Farr's House|An unambiguously yellow house stands before you. Farr's mom sees you and invites you in to have spaghetti for dinner. Zach's house is to the east, the crossroads lie to the south.|true||||east:Zach's House,south:Crossroads
 Travis's House|You're at the door of a house on the corner of an attractive development. Travis's mom opens the door and says "I have no idea where Travis is but I just made brownies! Want one?". You see another house to the West.|true|Brownie|||west:Wood's House,east:Crossroads
-Wood's House|You approach a house with a fleet of various trucks, jeeps, and cars. Chances are Wood and Zach are inside.|true||||in:Inside Wood's House,east:Travis's House
-Inside Wood's House|As expected, you see Wood and Zach at the dining room table, laptops out, playing World of Gamecraft. Fresh ribs have just come out of the oven and are resting on the counter. Wood and Zach beckon you to join them.|true|Ribs,Beverage|||out:Wood's House
+Wood's House|You approach a house with a fleet of various trucks, jeeps, and cars. Chances are Wood and Zach are inside.|true||||inside:Inside Wood's House,east:Travis's House
+Inside Wood's House|As expected, you see Wood and Zach at the dining room table, laptops out, playing World of Gamecraft. Fresh ribs have just come out of the oven and are resting on the counter. Wood and Zach beckon you to join them.|true|Ribs,Beverage|||outside:Wood's House
 Test Area|Hello, welcome to the test area! This area holds all of the game objects.|true|Snack,Soda,"Magic" Brownie,Ribs,Beverage,Shirt,Leather Jacket,Police Helmet,Blazer,Fur Coat,Spike Choker,Pocket Protector,Jock Strap,Backpack,Stick,Mellophone,Clip-on Tie,Discolored Collar,Angst,Glasses,Ego|Vice Principal,Tank,Punk Kid,Nerd,Jock|Cashier|north:WHS
 
 START LOCATION

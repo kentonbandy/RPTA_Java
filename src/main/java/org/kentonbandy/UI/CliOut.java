@@ -14,6 +14,7 @@ public class CliOut implements Output {
     private int defaultWidth = 60;
 
     public void atLocation(Location location, int wrapWidth) {
+        newLines(1);
         printUppercase(location.getName());
         String desc = location.getDescription();
         System.out.println(wordWrap(desc, wrapWidth));

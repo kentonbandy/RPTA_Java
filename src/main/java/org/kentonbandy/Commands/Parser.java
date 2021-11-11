@@ -17,9 +17,9 @@ public class Parser {
             "travel", "equip", "unequip", "remove", "use", "climb", "duck", "run", "attack", "speak", "strike", "push",
             "pull", "steal", "break", "place", "set", "grab", "throw", "move", "put");
 
-    private final Set<String> ignored = Set.of("in", "inside", "on", "of", "over", "under", "underneath", "below",
+    private final Set<String> ignored = Set.of("on", "of", "over", "under", "underneath", "below",
             "beneath", "into", "onto", "with", "across", "around", "as", "at", "beside", "between", "by", "from",
-            "near", "past", "toward", "towards", "the", "some", "all", "my", "out");
+            "near", "past", "toward", "towards", "the", "some", "all", "my");
 
     private final Map<String,String> oneWordMoveMap = Map.of(
             "n", "north",
@@ -42,12 +42,15 @@ public class Parser {
 
     public Command buildCommand(String input, Location location) throws NoSuchActionException, EmptyCommandException, ItemNotFoundException {
         Item item = null;
-        for (Item i : location.getItems()) {
-            String iName = i.getName().toLowerCase();
-            if (input.contains(iName)) {
-                input = input.replace(iName, iName.replaceAll(" ", ""));
+        if (location.getItems().size() > 0) {
+            for (Item i : location.getItems()) {
+                String iName = i.getName().toLowerCase();
+                if (input.contains(iName)) {
+                    input = input.replace(iName, iName.replaceAll(" ", ""));
+                }
             }
         }
+
         List<String> lst = new ArrayList<> (Arrays.asList(input.split(" ")));
         lst.removeAll(ignored);
         if (lst.size() == 0) throw new EmptyCommandException();

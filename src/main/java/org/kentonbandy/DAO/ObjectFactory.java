@@ -200,7 +200,8 @@ public class ObjectFactory {
             Map<String,String> map = new HashMap<>();
             String[] strings = arr[3].split(",");
             for (String s : arr[3].split(",")) {
-                items.add(worldItems.get(s));
+                Item item = worldItems.get(s);
+                if (item != null) items.add(item);
             }
             for (String s : arr[4].split(",")) enemies.add(worldEnemies.get(s));
             for (String s : arr[6].split(",")) {

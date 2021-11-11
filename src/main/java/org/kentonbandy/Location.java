@@ -56,51 +56,55 @@ public class Location {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getDescription() {
         return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isSafe() {
+        return isSafe;
+    }
+
+    public void setSafe(boolean safe) {
+        isSafe = safe;
     }
 
     public List<Item> getItems() {
         return items;
     }
 
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
+
     public List<Enemy> getEnemies() {
         return enemies;
+    }
+
+    public void setEnemies(List<Enemy> enemies) {
+        this.enemies = enemies;
     }
 
     public ShopOwner getShop() {
         return shop;
     }
 
-    /**
-     * @param description
-     */
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    /**
-     * @param items
-     */
-    public void setItems(List<Item> items) {
-        this.items = items;
-    }
-
-    /**
-     * @param enemies
-     */
-    public void setEnemies(List<Enemy> enemies) {
-        this.enemies = enemies;
-    }
-
-    /**
-     * @param shop
-     */
     public void setShop(ShopOwner shop) {
         this.shop = shop;
     }
 
-    public void setSafety(boolean isSafe) {
-        this.isSafe = isSafe;
+    public Map<String, String> getMap() {
+        return map;
+    }
+
+    public void setMap(Map<String, String> map) {
+        this.map = map;
     }
 }

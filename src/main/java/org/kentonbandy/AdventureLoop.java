@@ -22,6 +22,7 @@ public class AdventureLoop {
     private final Parser parser = new Parser();
     private final Input input = new CliIn();
     private final Output output = new CliOut();
+    private AdventureMethod methods = new AdventureMethod();
 
     public AdventureLoop(World world, Player player) {
         this.allItems = world.getAggregateItems().keySet();
@@ -41,9 +42,7 @@ public class AdventureLoop {
                 output.error(e.getMessage());
             }
             if (command != null) {
-                System.out.println("Action: " + command.getAction());
-                System.out.println("Object: " + command.getObject());
-                System.out.println("Target: " + command.getTarget());
+                execute(command);
             }
         }
     }
@@ -54,5 +53,33 @@ public class AdventureLoop {
 
     public void setCurrentLocation(Location location) {
         currentLocation = location;
+    }
+
+    private void commandInfoHelper(Command command) {
+        if (command != null) {
+            System.out.println("Action: " + command.getAction());
+            System.out.println("Object: " + command.getObject());
+            System.out.println("Target: " + command.getTarget());
+        }
+    }
+
+
+
+    private void execute(Command command) {
+        if (command.getAction().equals("move") && command.getObject() != null) move(command.getObject());
+        else output.error("I don't recognize that command.");
+    }
+
+    private void move(String direction) {
+        if (!currentLocation.getMap().containsKey(direction)) {
+            output.error("You can't go that way.");
+            return;
+        }
+        String destination = currentLocation.getMap().get(direction);
+        if (!locations.containsKey(destination)) {
+            output.error("Data error: destination \"" + destination + "\" does not exist.");
+        } else {
+            currentLocation = locations.get(destination);
+        }
     }
 }
