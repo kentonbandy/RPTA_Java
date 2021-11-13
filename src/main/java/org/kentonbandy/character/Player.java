@@ -122,7 +122,9 @@ public class Player extends Enemy {
     }
 
     public void getItem(Item item) {
-        getInventory().add(item);
+        List<Item> inv = getInventory();
+        inv.add(item);
+        setInventory(inv);
     }
 
     public void removeItem(Item item) {

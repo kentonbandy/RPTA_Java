@@ -9,6 +9,8 @@ import org.kentonbandy.item.Item;
 import java.util.List;
 import java.util.Scanner;
 
+import static java.lang.System.out;
+
 public class CliOut implements Output {
     private final Scanner scanner = new Scanner(System.in);
     private int defaultWidth = 60;
@@ -17,7 +19,7 @@ public class CliOut implements Output {
         newLines(1);
         printUppercase(location.getName());
         String desc = location.getDescription();
-        System.out.println(wordWrap(desc, wrapWidth));
+        out.println(wordWrap(desc, wrapWidth));
         newLines(1);
     }
 
@@ -29,9 +31,9 @@ public class CliOut implements Output {
         newLines(1);
         printUppercase("level up!!!");
         newLines(1);
-        System.out.println("Level " + player.getLevel() + "!");
-        System.out.println("HP: " + player.calculateHp(player.getLevel() - 1) + " --> " + player.getHp());
-        System.out.println("MP: " + player.calculateMp(player.getLevel() - 1) + " --> " + player.getMp());
+        out.println("Level " + player.getLevel() + "!");
+        out.println("HP: " + player.calculateHp(player.getLevel() - 1) + " --> " + player.getHp());
+        out.println("MP: " + player.calculateMp(player.getLevel() - 1) + " --> " + player.getMp());
         }
 
     public String wordWrap(String string, int width) {
@@ -59,24 +61,40 @@ public class CliOut implements Output {
 
     public void newLines(int num) {
         for (num=num; num>0; num--) {
-            System.out.println();
+            out.println();
         }
     }
 
     public void printUppercase(String string) {
-        System.out.println(string.toUpperCase());
+        out.println(string.toUpperCase());
     }
 
     public void printInventory(Player player) {
         List<Item> list = player.getInventory();
         int size = list.size();
-        System.out.print("Inventory: ");
-        if (size == 0) System.out.println("empty!");
+        out.print("Inventory: ");
+        if (size == 0) out.println("empty!");
         for (int i = 0; i < size; i++) {
-            if (i == size - 1) System.out.println(list.get(i).getName());
-            else System.out.print(list.get(i).getName() + ", ");
+            if (i == size - 1) out.println(list.get(i).getName());
+            else out.print(list.get(i).getName() + ", ");
         }
-        System.out.println(Currency.getCurrencyName() + ": " + player.getCurrencyAmount());
+        out.println(Currency.getCurrencyName() + ": " + player.getCurrencyAmount());
+    }
+
+    public void printLocationItems(List<Item> items) {
+        if (items == null || items.size() == 0) {
+            out.println("No items found.");
+            return;
+        }
+        String output = "";
+        for (Item i : items) {
+            output += i.getName() + ", ";
+        }
+        out.println(output.substring(0, output.length()-2));
+    }
+
+    public void get(String itemName) {
+        out.println("You've picked up " + itemName + ".");
     }
 
     public void setDefaultWidth(int width) {
@@ -84,6 +102,19 @@ public class CliOut implements Output {
     }
 
     public void error(String message) {
-        System.out.println("\n!!! " + message + " !!!\n");
+        out.println("\n!!! " + message + " !!!\n");
+    }
+
+    public void arrows() {
+        out.print(">>> ");
+    }
+
+    public void line(String message) {
+        out.println(message);
+    }
+
+    @Override
+    public void examine(Item item) {
+        line(item.getDescription());
     }
 }

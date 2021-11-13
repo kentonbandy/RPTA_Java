@@ -13,7 +13,7 @@ import java.util.*;
  */
 
 public class Parser {
-    private final Set<String> actions = Set.of("get", "take", "drop", "x", "examine", "inspect", "talk", "hit", "go",
+    private final Set<String> actions = Set.of("get", "take", "drop", "examine", "inspect", "talk", "hit", "go",
             "travel", "equip", "unequip", "remove", "use", "climb", "duck", "run", "attack", "speak", "strike", "push",
             "pull", "steal", "break", "place", "set", "grab", "throw", "move", "put");
 
@@ -27,27 +27,25 @@ public class Parser {
             "e", "east",
             "w", "west",
             "in", "inside",
-            "out", "outside"
-    );
+            "out", "outside");
 
     private final Map<String,String> oneWordNonMoveMap = Map.of(
             "i", "inventory",
-            "l", "look"
-    );
+            "l", "look",
+            "q", "quit");
 
     private final Set<String> directions = Set.of("north", "n", "south", "s", "east", "e", "west", "w", "up", "down",
             "in", "inside", "out", "outside");
 
-    private final Set<String> oneWordCommands = Set.of("inventory", "i", "look", "l");
+    private final Set<String> oneWordCommands = Set.of("inventory", "i", "look", "l", "quit", "q");
 
-    public Command buildCommand(String input, Location location) throws NoSuchActionException, EmptyCommandException, ItemNotFoundException {
+    public Command buildCommand(String input, Set<String> items) throws NoSuchActionException, EmptyCommandException, ItemNotFoundException {
         Item item = null;
-        if (location.getItems().size() > 0) {
-            for (Item i : location.getItems()) {
-                String iName = i.getName().toLowerCase();
-                if (input.contains(iName)) {
-                    input = input.replace(iName, iName.replaceAll(" ", ""));
-                }
+
+        for (String i : items) {
+            String iName = i.toLowerCase();
+            if (input.contains(iName)) {
+                input = input.replace(iName, iName.replaceAll(" ", ""));
             }
         }
 
@@ -56,18 +54,23 @@ public class Parser {
         if (lst.size() == 0) throw new EmptyCommandException();
         String action = lst.get(0);
         if (lst.size() == 1) return buildOneWordCommand(action);
+        if (lst.get(0).toLowerCase().equals("x")) action = "examine";
         if (!actions.contains(action)) throw new NoSuchActionException();
-        for (Item i : location.getItems()) {
-            String iName = i.getName().toLowerCase();
+        String objectName = null;
+        for (String i : items) {
+            String iName = i.toLowerCase();
             if (iName.replace(" ", "").equals(lst.get(1))) {
-                item = i;
+                objectName = i;
                 break;
             }
         }
-        if (item == null) throw new ItemNotFoundException();
-        if (lst.size() == 2) return new Command(action, item.getName());
+        if (objectName == null) {
+            if (directions.contains(lst.get(1))) objectName = lst.get(1);
+            else {throw new ItemNotFoundException();}
+        }
+        if (lst.size() == 2) return new Command(action, objectName);
         // todo: implement Targets (conditional items)
-        else if (lst.size() == 3) return new Command(action, item.getName(), lst.get(2));
+        else if (lst.size() == 3) return new Command(action, objectName, lst.get(2));
         throw new NoSuchActionException();
     }
 

@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class AdventureLoop {
-    private Set<String> allItems;
+    private Map<String,Item> allItems;
     private Map<String,Location> locations;
     private Location currentLocation;
     private final Player player;
@@ -22,10 +22,9 @@ public class AdventureLoop {
     private final Parser parser = new Parser();
     private final Input input = new CliIn();
     private final Output output = new CliOut();
-    private AdventureMethod methods = new AdventureMethod();
 
     public AdventureLoop(World world, Player player) {
-        this.allItems = world.getAggregateItems().keySet();
+        this.allItems = world.getAggregateItems();
         this.locations = world.getLocations();
         this.currentLocation = world.getStartLocation();
         this.player = player;
@@ -37,11 +36,12 @@ public class AdventureLoop {
             output.atLocation(currentLocation);
             Command command = null;
             try {
-                command = parser.buildCommand(input.prompt(), currentLocation);
+                command = parser.buildCommand(input.prompt(), allItems.keySet());
             } catch (NoSuchActionException | EmptyCommandException | ItemNotFoundException e) {
                 output.error(e.getMessage());
             }
             if (command != null) {
+                commandInfoHelper(command);
                 execute(command);
             }
         }
@@ -66,7 +66,23 @@ public class AdventureLoop {
 
 
     private void execute(Command command) {
-        if (command.getAction().equals("move") && command.getObject() != null) move(command.getObject());
+        String act = command.getAction();
+        String obj = command.getObject();
+        String tar = command.getTarget();
+
+        if ((act.equals("move") || act.equals("travel")) && obj != null) move(command.getObject());
+
+        else if (act.equals("look")) look();
+
+        else if (act.equals("examine")) examine(obj);
+
+        else if (act.equals("get")) get(obj);
+
+        else if (act.equals("inventory")) inventory();
+
+        else if (act.equals("quit")) quit();
+
+        // Throw error
         else output.error("I don't recognize that command.");
     }
 
@@ -81,5 +97,35 @@ public class AdventureLoop {
         } else {
             currentLocation = locations.get(destination);
         }
+    }
+
+    // Look currently displays Location items as a manual test.
+    // Actual implementation will either repeat location info or examine items
+    private void look() {
+        output.printLocationItems(currentLocation.getItems());
+    }
+
+    private void examine(String itemName) {
+        Item item = allItems.get(itemName);
+        if (currentLocation.getItems().contains(item) || player.getInventory().contains(item)) {
+            output.examine(item);
+        } else output.error("There is no " + itemName + " here.");
+    }
+
+    private void get(String itemName) {
+        Item item = allItems.get(itemName);
+        if (currentLocation.getItems().contains(item)) {
+            player.getItem(item);
+            currentLocation.removeItem(item);
+            output.get(item.getName());
+        } else {output.error("That item isn't here.");}
+    }
+
+    private void inventory() {
+        output.printInventory(player);
+    }
+
+    private void quit() {
+        if (input.quit()) System.exit(0);
     }
 }

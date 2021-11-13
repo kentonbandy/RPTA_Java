@@ -82,6 +82,10 @@ public class Character {
         this.currency = currency;
     }
 
+    public void setInventory(List<Item> inventory) {
+        this.inventory = inventory;
+    }
+
     @Override
     public String toString() {
         return name;
