@@ -3,8 +3,10 @@ package org.kentonbandy.UI;
 
 import org.kentonbandy.Location;
 import org.kentonbandy.character.Player;
+import org.kentonbandy.character.ShopOwner;
 import org.kentonbandy.item.Currency;
 import org.kentonbandy.item.Item;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 import java.util.Scanner;
@@ -34,7 +36,7 @@ public class CliOut implements Output {
         out.println("Level " + player.getLevel() + "!");
         out.println("HP: " + player.calculateHp(player.getLevel() - 1) + " --> " + player.getHp());
         out.println("MP: " + player.calculateMp(player.getLevel() - 1) + " --> " + player.getMp());
-        }
+    }
 
     public String wordWrap(String string, int width) {
         String[] wordArr = string.split(" ");
@@ -60,7 +62,7 @@ public class CliOut implements Output {
     }
 
     public void newLines(int num) {
-        for (num=num; num>0; num--) {
+        for (num = num; num > 0; num--) {
             out.println();
         }
     }
@@ -90,7 +92,7 @@ public class CliOut implements Output {
         for (Item i : items) {
             output += i.getName() + ", ";
         }
-        out.println(output.substring(0, output.length()-2));
+        out.println(output.substring(0, output.length() - 2));
     }
 
     public void get(String itemName) {
@@ -113,8 +115,57 @@ public class CliOut implements Output {
         out.println(message);
     }
 
+    public void horizontalLine(int length) {
+        if (length>0) {
+            for (int i=0; i<length; i++) {
+                out.print("-");
+            }
+            out.println();
+        }
+    }
+
     @Override
     public void examine(Item item) {
         line(item.getDescription());
     }
+
+    @Override
+    public void shopMenu(ShopOwner shop, Player player) {
+        newLines(1);
+        out.print(clampToWidth("Item", 12, true));
+        out.print(clampToWidth("Price", 8, true));
+        line(clampToWidth("Description", 60, true));
+        horizontalLine(80);
+        for (Item item : shop.getInventory()) {
+            out.print(clampToWidth(item.getName(), 12, true));
+            out.print(clampToWidth("$" + item.getPrice(), 8, true));
+            line(clampToWidth(item.getDescription(), 60, true));
+        }
+        newLines(1);
+        line("Your currency: $" + player.getCurrencyAmount());
+        line("Say \"leave\" to leave");
+        newLines(1);
+        out.print(shop.getName() + ": ");
+        out.println(shop.getGreeting());
+    }
+
+    @Override
+    public void purchaseSuccess(Item item) {
+        out.println();
+        line("You've purchased " + item.getName() + " for $" + item.getPrice() + "!");
+    }
+
+    private String clampToWidth(String word, int width, boolean toLeft) {
+        int len = word.length();
+        if (len >= width) return len > 2 ? word.substring(0, width - 3) + ".. " : word.substring(0, len);
+        return toLeft ? StringUtils.rightPad(word, width, " ") : StringUtils.leftPad(word, width, " ");
+    }
+
+    private String clampToWidth(int num, int width, boolean toLeft) {
+        String word = String.valueOf(num);
+        int len = word.length();
+        if (len >= width) return len > 2 ? word.substring(0, width - 3) + ".. " : word.substring(0, len);
+        return toLeft ? StringUtils.rightPad(word, width, " ") : StringUtils.leftPad(word, width, " ");
+    }
+
 }

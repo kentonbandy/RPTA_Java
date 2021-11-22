@@ -22,7 +22,7 @@ public class Main {
         ObjectFactory objectFactory = new ObjectFactory(dataLoader.loadGameData());
         World world = new World();
         world.buildWorld(objectFactory);
-        Player player = new Player("Kenny", "A high school student that should probably be doing homework.", 0, new ArrayList<Item>(List.of()), 1, world.getArmors().get("Shirt"), world.getWeapons().get("Backpack"));
+        Player player = new Player("Kenny", "A high school student that should probably be doing homework.", 25, new ArrayList<Item>(List.of()), 1, world.getArmors().get("Shirt"), world.getWeapons().get("Backpack"));
         AdventureLoop loop = new AdventureLoop(world, player);
 
         for (Item i : world.getLocations().get("WHS").getItems()) {

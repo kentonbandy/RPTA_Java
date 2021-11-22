@@ -1,11 +1,9 @@
 package org.kentonbandy;
 
 import org.kentonbandy.Commands.*;
-import org.kentonbandy.UI.CliIn;
-import org.kentonbandy.UI.CliOut;
-import org.kentonbandy.UI.Input;
-import org.kentonbandy.UI.Output;
+import org.kentonbandy.UI.*;
 import org.kentonbandy.character.Player;
+import org.kentonbandy.character.ShopOwner;
 import org.kentonbandy.item.Item;
 
 import java.util.ArrayList;
@@ -36,12 +34,12 @@ public class AdventureLoop {
             output.atLocation(currentLocation);
             Command command = null;
             try {
-                command = parser.buildCommand(input.prompt(), allItems.keySet());
+                command = parser.buildCommand(input.prompt(), allItems.keySet(), currentLocation);
             } catch (NoSuchActionException | EmptyCommandException | ItemNotFoundException e) {
                 output.error(e.getMessage());
             }
             if (command != null) {
-                commandInfoHelper(command);
+                // commandInfoHelper(command);
                 execute(command);
             }
         }
@@ -79,6 +77,8 @@ public class AdventureLoop {
         else if (act.equals("get")) get(obj);
 
         else if (act.equals("inventory")) inventory();
+
+        else if (act.equals("talk")) talk(obj);
 
         else if (act.equals("quit")) quit();
 
@@ -123,6 +123,40 @@ public class AdventureLoop {
 
     private void inventory() {
         output.printInventory(player);
+    }
+
+    private void talk(String shopName) {
+        if (currentLocation.getShop() != null && currentLocation.getShop().getName().equalsIgnoreCase(shopName)) {
+            shopLoop(currentLocation.getShop());
+        } else if (false) {
+            // interact with enemies/NPCs
+        } else {
+            output.error(shopName + " isn't here.");
+        }
+    }
+
+    private void shopLoop(ShopOwner shop) {
+        while (true) {
+            output.shopMenu(shop, player);
+            Item i = null;
+            try {
+                i = input.prompt(shop);
+            } catch (LeaveException e) {
+                output.line(shop.getFarewell());
+                break;
+            }
+            if (i != null) {
+                if (player.getCurrencyAmount() >= i.getPrice()) {
+                    player.getItem(i);
+                    player.setCurrency(player.getCurrencyAmount() - i.getPrice());
+                    output.purchaseSuccess(i);
+                } else {
+                    output.error("You don't have enough currency");
+                }
+            } else {
+                output.error("You can't buy that here");
+            }
+        }
     }
 
     private void quit() {

@@ -2,6 +2,7 @@ package org.kentonbandy.UI;
 
 import org.kentonbandy.Location;
 import org.kentonbandy.character.Player;
+import org.kentonbandy.character.ShopOwner;
 import org.kentonbandy.item.Item;
 
 import java.util.List;
@@ -20,4 +21,6 @@ public interface Output {
     void arrows();
     void line(String message);
     void examine(Item item);
+    void shopMenu(ShopOwner shop, Player player);
+    void purchaseSuccess(Item item);
 }

@@ -19,7 +19,7 @@ public class Parser {
 
     private final Set<String> ignored = Set.of("on", "of", "over", "under", "underneath", "below",
             "beneath", "into", "onto", "with", "across", "around", "as", "at", "beside", "between", "by", "from",
-            "near", "past", "toward", "towards", "the", "some", "all", "my");
+            "near", "past", "toward", "towards", "the", "some", "all", "my", "to");
 
     private final Map<String,String> oneWordMoveMap = Map.of(
             "n", "north",
@@ -39,7 +39,7 @@ public class Parser {
 
     private final Set<String> oneWordCommands = Set.of("inventory", "i", "look", "l", "quit", "q");
 
-    public Command buildCommand(String input, Set<String> items) throws NoSuchActionException, EmptyCommandException, ItemNotFoundException {
+    public Command buildCommand(String input, Set<String> items, Location location) throws NoSuchActionException, EmptyCommandException, ItemNotFoundException {
         Item item = null;
 
         for (String i : items) {
@@ -54,7 +54,7 @@ public class Parser {
         if (lst.size() == 0) throw new EmptyCommandException();
         String action = lst.get(0);
         if (lst.size() == 1) return buildOneWordCommand(action);
-        if (lst.get(0).toLowerCase().equals("x")) action = "examine";
+        if (lst.get(0).toLowerCase().equals("x") || lst.get(0).toLowerCase().equals("inspect")) action = "examine";
         if (!actions.contains(action)) throw new NoSuchActionException();
         String objectName = null;
         for (String i : items) {
@@ -65,7 +65,10 @@ public class Parser {
             }
         }
         if (objectName == null) {
-            if (directions.contains(lst.get(1))) objectName = lst.get(1);
+            if (location.getShop() != null) {
+                String shop = location.getShop().getName();
+                if (shop.equalsIgnoreCase(lst.get(1))) objectName = shop;
+            } else if (directions.contains(lst.get(1))) objectName = lst.get(1);
             else {throw new ItemNotFoundException();}
         }
         if (lst.size() == 2) return new Command(action, objectName);
