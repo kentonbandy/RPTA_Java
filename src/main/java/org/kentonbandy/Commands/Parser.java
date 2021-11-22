@@ -37,9 +37,9 @@ public class Parser {
     private final Set<String> directions = Set.of("north", "n", "south", "s", "east", "e", "west", "w", "up", "down",
             "in", "inside", "out", "outside");
 
-    private final Set<String> oneWordCommands = Set.of("inventory", "i", "look", "l", "quit", "q");
+    private final Set<String> oneWordCommands = Set.of("inventory", "i", "look", "l", "quit", "q", "equipment", "equipped");
 
-    public Command buildCommand(String input, Set<String> items, Location location) throws NoSuchActionException, EmptyCommandException, ItemNotFoundException {
+    public Command buildCommand(String input, Set<String> items, Location location) throws NoSuchActionException, EmptyCommandException, ItemNotFoundException, ObjectNotFoundExeption {
         Item item = null;
 
         for (String i : items) {
@@ -69,7 +69,7 @@ public class Parser {
                 String shop = location.getShop().getName();
                 if (shop.equalsIgnoreCase(lst.get(1))) objectName = shop;
             } else if (directions.contains(lst.get(1))) objectName = lst.get(1);
-            else {throw new ItemNotFoundException();}
+            else objectName = lst.get(1);
         }
         if (lst.size() == 2) return new Command(action, objectName);
         // todo: implement Targets (conditional items)

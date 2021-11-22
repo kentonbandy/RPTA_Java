@@ -155,6 +155,20 @@ public class CliOut implements Output {
         line("You've purchased " + item.getName() + " for $" + item.getPrice() + "!");
     }
 
+    @Override
+    public void drop(String itemName) {
+        out.println();
+        line("You've dropped " + itemName + ".");
+    }
+
+    @Override
+    public void printEquipment(Player player) {
+        newLines(1);
+        line("Current Equipment:");
+        line("Armor:  " + player.getArmor());
+        line("Weapon: " + player.getWeapon());
+    }
+
     private String clampToWidth(String word, int width, boolean toLeft) {
         int len = word.length();
         if (len >= width) return len > 2 ? word.substring(0, width - 3) + ".. " : word.substring(0, len);

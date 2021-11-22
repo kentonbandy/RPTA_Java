@@ -23,4 +23,6 @@ public interface Output {
     void examine(Item item);
     void shopMenu(ShopOwner shop, Player player);
     void purchaseSuccess(Item item);
+    void drop(String itemName);
+    void printEquipment(Player player);
 }

@@ -4,7 +4,9 @@ import org.kentonbandy.Commands.*;
 import org.kentonbandy.UI.*;
 import org.kentonbandy.character.Player;
 import org.kentonbandy.character.ShopOwner;
+import org.kentonbandy.item.Armor;
 import org.kentonbandy.item.Item;
+import org.kentonbandy.item.Weapon;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +22,7 @@ public class AdventureLoop {
     private final Parser parser = new Parser();
     private final Input input = new CliIn();
     private final Output output = new CliOut();
+    private final ShopLoop shopLoop = new ShopLoop();
 
     public AdventureLoop(World world, Player player) {
         this.allItems = world.getAggregateItems();
@@ -35,11 +38,11 @@ public class AdventureLoop {
             Command command = null;
             try {
                 command = parser.buildCommand(input.prompt(), allItems.keySet(), currentLocation);
-            } catch (NoSuchActionException | EmptyCommandException | ItemNotFoundException e) {
+            } catch (NoSuchActionException | EmptyCommandException | ItemNotFoundException | ObjectNotFoundExeption e) {
                 output.error(e.getMessage());
             }
             if (command != null) {
-                // commandInfoHelper(command);
+                commandInfoHelper(command);
                 execute(command);
             }
         }
@@ -61,22 +64,26 @@ public class AdventureLoop {
         }
     }
 
-
-
     private void execute(Command command) {
         String act = command.getAction();
         String obj = command.getObject();
         String tar = command.getTarget();
 
-        if ((act.equals("move") || act.equals("travel")) && obj != null) move(command.getObject());
+        if ((act.equals("move") || act.equals("travel") || act.equals("go")) && obj != null) move(command.getObject());
 
         else if (act.equals("look")) look();
 
         else if (act.equals("examine")) examine(obj);
 
-        else if (act.equals("get")) get(obj);
+        else if (act.equals("get") || act.equals("take") || act.equals("grab")) get(obj);
+
+        else if (act.equals("drop") || act.equals("throw")) drop(obj);
+
+        else if (act.equals("equip")) equip(obj);
 
         else if (act.equals("inventory")) inventory();
+
+        else if (act.equals("equipped") || act.equals("equipment")) equipped();
 
         else if (act.equals("talk")) talk(obj);
 
@@ -121,41 +128,48 @@ public class AdventureLoop {
         } else {output.error("That item isn't here.");}
     }
 
+    private void drop(String itemName) {
+        Item item = allItems.get(itemName);
+        if (player.getInventory().contains(item)) {
+            currentLocation.addItem(item);
+            player.removeItem(item);
+            output.drop(item.getName());
+        } else {output.error("You don't have that item");}
+    }
+
+    private void equip(String itemName) {
+        Item item = allItems.get(itemName);
+        System.out.println(item.getClass().getName());
+        if (player.getInventory().contains(item)) {
+            if (item.getClass().getName().equals("org.kentonbandy.item.Armor")) {
+                player.equipArmor((Armor)item);
+                output.printEquipment(player);
+            } else if (item.getClass().getName().equals("org.kentonbandy.item.Weapon")) {
+                player.equipWeapon((Weapon)item);
+                output.printEquipment(player);
+            } else {
+                output.error("That can't be equipped");
+            }
+        } else {
+            output.error("You don't have that item");
+        }
+    }
+
     private void inventory() {
         output.printInventory(player);
     }
 
+    private void equipped() {
+        output.printEquipment(player);
+    }
+
     private void talk(String shopName) {
         if (currentLocation.getShop() != null && currentLocation.getShop().getName().equalsIgnoreCase(shopName)) {
-            shopLoop(currentLocation.getShop());
+            shopLoop.run(currentLocation.getShop(), player);
         } else if (false) {
             // interact with enemies/NPCs
         } else {
             output.error(shopName + " isn't here.");
-        }
-    }
-
-    private void shopLoop(ShopOwner shop) {
-        while (true) {
-            output.shopMenu(shop, player);
-            Item i = null;
-            try {
-                i = input.prompt(shop);
-            } catch (LeaveException e) {
-                output.line(shop.getFarewell());
-                break;
-            }
-            if (i != null) {
-                if (player.getCurrencyAmount() >= i.getPrice()) {
-                    player.getItem(i);
-                    player.setCurrency(player.getCurrencyAmount() - i.getPrice());
-                    output.purchaseSuccess(i);
-                } else {
-                    output.error("You don't have enough currency");
-                }
-            } else {
-                output.error("You can't buy that here");
-            }
         }
     }
 
