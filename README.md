@@ -19,3 +19,4 @@ AS OF 11/31/21:
 - The "look" or "l" command is currently used for manual testing and prints out the Location item list. However, in the future the look command will repeat the location description.
 - The player can EXAMINE an item by typing "examine {itemName}" or simply "x {itemName}". This outputs the item description.
 - The player may choose to QUIT the application at any time by typing "quit" or "q". A y/n prompt verifies the player's wish to quit.
+- The player can interact with shop owners and purchase items from them.
