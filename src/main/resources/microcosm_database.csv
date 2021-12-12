@@ -7,19 +7,19 @@ Crisscross|Two thwacks in opposing directions!|5|7
 Blast|A disorienting sonic blast!|6
 Energy Burst|The mellophone begins to glow as it absorbs energy ... and releases it in a devastating giant beam out of the bell!|10|15
 Give Detention|Straight to Detention!|2
-Call Parents|Your child has been very very naughty!|6|5
-Ankle Bite|That's gonna hurt in the morning!|3|2
+Call Parents|Your child has been very very naughty!|6
+Ankle Bite|That's gonna hurt in the morning!|3
 Threatening Aura|Hostile vibes extend in all directions!|1
-Pee on Leg|That smells awful!|4|4
+Pee on Leg|That smells awful!|4
 Call names|Wow, name calling is so mean!|2
 Crude Joke|Part of a public school education!|3
-Threatening Odor|Breathing is painful|4|4
+Threatening Odor|Breathing is painful|4
 Corrects Grammar|A grammatical error comes at a cost... in HP!|1
 Thick Lenses|The sun catches the lenses at the perfect angle, creating a death ray|3
-Steal WiFi|A laptop appears... password cracked... WiFi stolen!|4|4
+Steal WiFi|A laptop appears... password cracked... WiFi stolen!|4
 Muscle Flex|Those muscles are too big to handle!|2
 Football|A football smashes into its target as only a third-stringer could throw it!|3
-Bench|You've been bench pressed! How does this cause damage? No one knows!|5|6
+Bench|You've been bench pressed! How does this cause damage? No one knows!|5
 
 ITEM
 name|description|price|gettable
@@ -38,7 +38,7 @@ Blazer|This is something you'd wear to a formal gathering.|20|8
 Fur Coat|The best natural armor a dog could ask for|100|4
 Spike Choker|It's like a pointy dog collar but for humans. It's edgy, I guess.|5|2
 Pocket Protector|Do they still make these things? A sturdy piece of plastic that goes in a shirt pocket and holds pens.|1|2
-Jock Strap|You know what it is. Protects the wearer from the most severe of attacks|4|2
+Shoulder Pads|As if this person's shoulders aren't big enough, they're wearing huge shoulder pads!|4|2
 
 WEAPON
 name|description|price|Attacks(comma separated)|gettable
@@ -52,12 +52,12 @@ Glasses|A pair of bombastic bifocals.|5|Corrects Grammar,Thick Lenses,Steal Wifi
 Ego|On game night, the entire town comes to cheer them on. This is big head energy.|0|Muscle Flex,Football,Bench
 
 ENEMY
-name|description|currency|inventory(comma separated)|level|Armor|Weapon
-Vice Principal|An overdressed man with a thick southern accent. From what you can tell, he despises kids.|100|Snack,Soda|6|Blazer|Clip-On Tie
-Tank|A small, white dog with an ironic name. Wears an interesting collar.|50|Snack,Soda|3|Fur Coat|Discolored Collar
-Punk Kid|A kid who's clearly looking for trouble. Wears a spike choker and is poised to battle with weaponized teen angst.|10||1|Spike Choker|Angst
-Nerd|This kid has everything: thick glasses, pocket protector, and it looks like there's a laptop in their backpack.|10||1|Pocket Protector|Glasses
-Jock|Great, a meathead who spends half their time in the weight room has challenged you to a fight. Good luck!|15||2|jockstrap|Ego
+name|description|currency|inventory(comma separated)|battleMessage|level|Armor|Weapon
+Vice Principal|An overdressed man with a thick southern accent. From what you can tell, he despises kids.|100|Snack,Soda|The vice principal is trying to give you detention!|6|Blazer|Clip-On Tie
+Tank|A small, white dog with an ironic name. Wears an interesting collar.|50|Snack,Soda|Tank runs up to you and bares his tiny fangs!|3|Fur Coat|Discolored Collar
+Punk Kid|A kid who's clearly looking for trouble. Wears a spike choker and is poised to battle with weaponized teen angst.|10||A Punk Kid is looking for a fight!|1|Spike Choker|Angst
+Nerd|This kid has everything: thick glasses, pocket protector, and it looks like there's a laptop in their backpack.|10||For some reason a Nerd is looking for trouble and they found you!|1|Pocket Protector|Glasses
+Jock|Great, a meathead who spends half their time in the weight room has challenged you to a fight. Good luck!|15||A muscly Jock is squaring up and pounding their fist!|2|Shoulder Pads|Ego
 
 SHOP OWNER
 name|description|currency|inventory(comma separated)|greeting|farewell

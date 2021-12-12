@@ -46,6 +46,8 @@ public class Executor {
 
         else if (act.equals("talk")) talk(obj, currentLocation, player);
 
+        else if (act.equals("wait")) return null;
+
         else if (act.equals("quit")) quit();
 
         else output.error("I don't recognize that command.");

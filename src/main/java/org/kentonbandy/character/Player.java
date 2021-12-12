@@ -8,9 +8,9 @@ public class Player extends Enemy {
     private static int mp;
     private static int xp;
 
-    public Player (String name, String description, int currency, List<Item> inventory, int level, Armor armor,
+    public Player (String name, String description, int currency, List<Item> inventory, String battleMessage, int level, Armor armor,
                           Weapon weapon) {
-        super(name, description, currency, inventory, level, armor, weapon);
+        super(name, description, currency, inventory, battleMessage, level, armor, weapon);
     }
 
     /**

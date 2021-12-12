@@ -15,7 +15,7 @@ import java.util.*;
 public class Parser {
     private final Set<String> actions = Set.of("get", "take", "drop", "examine", "inspect", "talk", "hit", "go",
             "travel", "equip", "unequip", "remove", "use", "climb", "duck", "run", "attack", "speak", "strike", "push",
-            "pull", "steal", "break", "place", "set", "grab", "throw", "move", "put");
+            "pull", "steal", "break", "place", "set", "grab", "throw", "move", "put", "wait");
 
     private final Set<String> ignored = Set.of("on", "of", "over", "under", "underneath", "below",
             "beneath", "into", "onto", "with", "across", "around", "as", "at", "beside", "between", "by", "from",
@@ -37,7 +37,7 @@ public class Parser {
     private final Set<String> directions = Set.of("north", "n", "south", "s", "east", "e", "west", "w", "up", "down",
             "in", "inside", "out", "outside");
 
-    private final Set<String> oneWordCommands = Set.of("inventory", "i", "look", "l", "quit", "q", "equipment", "equipped");
+    private final Set<String> oneWordCommands = Set.of("inventory", "i", "look", "l", "quit", "q", "equipment", "equipped", "wait");
 
     public Command buildCommand(String input, Set<String> items, Location location) throws NoSuchActionException, EmptyCommandException, ItemNotFoundException, ObjectNotFoundExeption {
         Item item = null;

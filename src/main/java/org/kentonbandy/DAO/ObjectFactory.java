@@ -168,14 +168,14 @@ public class ObjectFactory {
 
     private Enemy buildEnemy(String[] arr, Map<String,Item> worldItems, Map<String,Armor> worldArmors, Map<String,Weapon> worldWeapons) {
         Enemy enemy = null;
-        if (arr.length == 7) {
+        if (arr.length == 8) {
             String[] itemStrings = arr[3].split(",");
             List<Item> items = new ArrayList<>();
             for (String s : itemStrings) {
                 items.add(worldItems.get(s));
             }
-            enemy = new Enemy(arr[0], arr[1], Integer.parseInt(arr[2]), items, Integer.parseInt(arr[4]),
-                    worldArmors.get(arr[5]), worldWeapons.get(arr[6]));
+            enemy = new Enemy(arr[0], arr[1], Integer.parseInt(arr[2]), items, arr[4], Integer.parseInt(arr[5]),
+                    worldArmors.get(arr[6]), worldWeapons.get(arr[7]));
         }
         return enemy;
     }

@@ -7,6 +7,7 @@ import org.kentonbandy.item.*;
 import java.util.List;
 
 public class Enemy extends Character {
+    private String battleMessage;
     private int level;
     private Armor armor;
     private Weapon weapon;
@@ -15,9 +16,10 @@ public class Enemy extends Character {
 
 
 
-    public Enemy(String name, String description, int currency, List<Item> inventory, int level, Armor armor,
+    public Enemy(String name, String description, int currency, List<Item> inventory, String battleMessage, int level, Armor armor,
                  Weapon weapon) {
         super(name, description, currency, inventory);
+        this.battleMessage = battleMessage;
         this.level = level;
         this.armor = armor;
         this.weapon = weapon;
@@ -115,5 +117,17 @@ public class Enemy extends Character {
      */
     public void setTriggerItem(Item item) {
         triggerItem = item;
+    }
+
+    public String getBattleMessage() {
+        return battleMessage;
+    }
+
+    public void setBattleMessage(String battleMessage) {
+        this.battleMessage = battleMessage;
+    }
+
+    public Item getTriggerItem() {
+        return triggerItem;
     }
 }
