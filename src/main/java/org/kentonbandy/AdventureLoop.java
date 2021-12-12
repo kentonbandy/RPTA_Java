@@ -139,7 +139,6 @@ public class AdventureLoop {
 
     private void equip(String itemName) {
         Item item = allItems.get(itemName);
-        System.out.println(item.getClass().getName());
         if (player.getInventory().contains(item)) {
             if (item.getClass().getName().equals("org.kentonbandy.item.Armor")) {
                 player.equipArmor((Armor)item);
